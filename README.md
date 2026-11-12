@@ -130,9 +130,17 @@ The agent should preserve prior versions, track changes to recurring characters 
 
 The studio uses a selected visual direction, story-specific cast sheets and recurring location references to help keep characters and settings consistent. The agent plans shots around story beats, action and emotion; there is no fixed number of images per minute. You can choose a custom look or browse the [visual preference gallery](references/style/visual-preferences/README.md).
 
-[![Eight visual directions for story films](references/style/visual-preferences/visual-style-overview.png)](references/style/visual-preferences/README.md)
+### Explore the visual styles
 
-This illustrated overview is a guide. Open the [visual preference gallery](references/style/visual-preferences/README.md) to view and choose the original reference images.
+Click any image to open its full-size original. These examples show the visual treatment; your story gets its own characters, settings, colors and mood. You can also ask for a custom style.
+
+| Realistic Cinema | Detailed Cinematic Anime | Cel-Shaded Anime | Feature 2D Animation |
+| --- | --- | --- | --- |
+| [![Realistic Cinema visual reference](references/style/visual-preferences/images/realistic-cinema.png)](references/style/visual-preferences/images/realistic-cinema.png) | [![Detailed Cinematic Anime visual reference](references/style/visual-preferences/images/detailed-cinematic-anime.png)](references/style/visual-preferences/images/detailed-cinematic-anime.png) | [![Cel-Shaded Anime visual reference](references/style/visual-preferences/images/cel-shaded-anime.png)](references/style/visual-preferences/images/cel-shaded-anime.png) | [![Feature 2D Animation visual reference](references/style/visual-preferences/images/2d-cartoon.png)](references/style/visual-preferences/images/2d-cartoon.png) |
+| **Stylized 3D Animation** | **Painted Storybook** | **Storybook Stickman** | **Cinematic Graphic Novel** |
+| [![Stylized 3D Animation visual reference](references/style/visual-preferences/images/stylized-3d.png)](references/style/visual-preferences/images/stylized-3d.png) | [![Painted Storybook visual reference](references/style/visual-preferences/images/painted-storybook.png)](references/style/visual-preferences/images/painted-storybook.png) | [![Storybook Stickman visual reference](references/style/visual-preferences/images/storybook-stickman.png)](references/style/visual-preferences/images/storybook-stickman.png) | [![Cinematic Graphic Novel visual reference](references/style/visual-preferences/images/graphic-novel.png)](references/style/visual-preferences/images/graphic-novel.png) |
+
+[Explore the full visual preference guide](references/style/visual-preferences/README.md) for descriptions and stable style IDs.
 
 **Codex and Antigravity:** the creator has tried both and found Codex produced more consistent images in their own use. Your results may differ with the model, references and prompts. The included image-job bridge currently targets Codex’s `image_gen.imagegen` tool; using Antigravity or another assistant requires checking its available image tools and handling image generation/import through the supported workflow. Do not assume either tool is available, free, or able to use every reference automatically.
 
