@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "provider": "kokoro",
+  "model": null,
+  "providers": {},
+  "cast": {},
+  "voice": null,
+  "speed": 1.0,
+  "language": "en-us",
+  "pause": 0.15,
+  "model_sha256": null,
+  "voices_sha256": null,
+  "spoken_forms": {},
+  "pronunciations": {}
+}

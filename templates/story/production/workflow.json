@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "mode": "fast",
+  "task": "film",
+  "audit": "focused",
+  "minor_edits": "delegate",
+  "scope": {
+    "tools": ["kokoro", "procedural-audio", "provided-audio"],
+    "budget": {"limit": 0, "currency": "USD"},
+    "external_upload": [],
+    "download_domains": []
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-31",
+  "basis": "Actual inspection of all eight selected PNGs, their comparison sheet and recorded prompts; hashes verified against the catalog and manifest.",
+  "scope": "Observable treatment only. Story-specific people, anatomy variants, setting, palette, lighting and mood follow the written visual bible and actual selected references.",
+  "historical_prompt_note": "Generation prompts remain provenance, not a claim of exact compliance. VIS-22's historical request for line legs differs from the accepted image: clothed bodies and legs, black line arms and rounded black hands. Preserve the accepted hybrid when that exact example is selected.",
+  "styles": [
+    {
+      "id": "VIS-01",
+      "sha256": "c6b1abc1bb2bc99889ef9333c8ca25b9f75889c9ad2d41633c6895bdbea32339",
+      "traits": ["natural live-action human anatomy and facial detail", "believable fabric, wood, stone and skin materials", "photographic perspective and restrained depth of field", "plausible directional light and soft material shading"]
+    },
+    {
+      "id": "VIS-21",
+      "sha256": "df142b03797e035d340c07159fc8daaccb20bda04e4fcc9a1452a221c5cc87dd",
+      "traits": ["fine drawn anime contours and expressive drawn faces", "layered shading and selective texture within illustrated forms", "richly painted scenery with depth and small environmental detail", "coherent illustrated treatment across people and surroundings"]
+    },
+    {
+      "id": "VIS-02",
+      "sha256": "32a3d61e90f874f126e9dedb98556cbc780b76ae9474b4eba2570d2d34555339",
+      "traits": ["clean anime character contours", "broad flat color areas and decisive cel-shadow shapes", "simplified low-texture scenery and readable silhouettes", "graphic light and shadow rather than heavily painted surface detail"]
+    },
+    {
+      "id": "VIS-04",
+      "sha256": "fbb720afb952d9cffb2e46658e877b55a0ddae154bdd2df68ffd08c7be8a28df",
+      "traits": ["rounded expressive feature-animation character designs", "drawn contours, simplified anatomy and clear face shapes", "controlled illustrated shading and painted background forms", "cohesive cartoon construction in characters and environment"]
+    },
+    {
+      "id": "VIS-05",
+      "sha256": "d02581f4cca1ba569eca79bdc4851b763e46879037d3c9c3bfd2abd746ef4b96",
+      "traits": ["sculpted dimensional stylized character forms", "rounded volume and modeled facial expressions", "tactile cloth, hair and environment materials", "soft bounced illumination and coherent three-dimensional depth"]
+    },
+    {
+      "id": "VIS-07",
+      "sha256": "bdf496b571df9407cc0d768088c3576516c8c6a5bf92bc86a9c6320d62bc6ebb",
+      "traits": ["visible opaque gouache-like brushwork", "simplified illustrated forms and painted edge variation", "selective texture across characters and scenery", "painterly color and depth rather than glossy modeled surfaces"]
+    },
+    {
+      "id": "VIS-22",
+      "sha256": "d3781578d0446d52a6d6400736b2f2b3bcee5a667221e7ecb114ac0cbd0eb190",
+      "traits": ["simple rounded faces with small dark eyes and restrained mouth marks", "thin black line arms ending in rounded black hands", "clothed bodies and clothed legs with ordinary shoes, not line legs", "rich detailed storybook scenery and textured clothing around deliberately simple face and arm construction"]
+    },
+    {
+      "id": "VIS-06",
+      "sha256": "aeb5c91f1d5eb086d2329255d881cbd57a8ba473c2bd22d3f2dcd4dce7181f28",
+      "traits": ["confident varied-weight ink contours", "graphic solid-shadow shapes with selective fine hatching", "expressive adult drawn faces and believable simplified anatomy", "controlled spot color and ink treatment across people, architecture and scenery"]
+    }
+  ]
+}

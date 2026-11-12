@@ -1,0 +1,57 @@
+{
+  "id": "VIS-22",
+  "name": "Storybook Stickman",
+  "file": "images/storybook-stickman.png",
+  "family": "Hybrid figures",
+  "best_for": "Narrated fables · simple characters with rich settings",
+  "prompt": "Use case: illustration-story\nStyle/medium: A refined STORYBOOK STICKMAN film illustration: deliberately simple, appealing stick-figure people inside a softly detailed illustrated station. Woman and father have clean round light faces, tiny expressive eyes/mouths, simple black bob/silver-hair marks, thin black LINE arms and legs, minimal flat indigo/olive clothing shapes and terracotta scarf accent. Their silhouettes must remain unmistakably stick figures, with no filled anatomical limbs or realistic faces. Show the envelope as a small clear cream shape near the woman's simple hand. The bench, station and hills are tastefully hand-painted with soft depth and selective detail, not photographic microtexture. The contrast between simple figures and a richer storybook environment is deliberate. Elegant poses, readable emotion, uncluttered staging; no crude doodles, extra limbs or busy cobblestones.\n\nAsset: one polished full-frame style reference for story-film production, wide landscape 16:9. Aim for a clear emotionally readable movie still, not a decorative poster.\nScene: a quiet fictional countryside railway platform in soft late-afternoon daylight. A cream plaster station with sage-green window trim and a simple timber canopy recedes into the background; one wooden bench at the right, a restrained glimpse of green hills beyond. Keep the setting spacious and uncluttered; no crowds or train or signs.\nStory moment: a young adult woman has come home and offers her elderly father one small plain cream envelope. She stands at the left facing right; he sits on the bench at the right facing her. Their eyes meet with warm, restrained, relieved smiles. She has warm medium-brown skin, a short wavy dark bob, an indigo jacket over an ivory shirt, a muted terracotta scarf, dark trousers and simple brown boots. He has warm medium-brown skin, short silver hair, an olive cardigan over a cream shirt and charcoal trousers. The envelope is held naturally by the woman at waist height; his hands rest comfortably on his knees. Exactly two people and one envelope. No dramatic reaching hands or complicated finger gestures.\nComposition: medium-wide eye-level two-shot, natural perspective, readable faces and silhouettes; woman visible head to boots, father fully visible seated, both comfortably inside frame. Subjects occupy the central area with breathing room at the edges. Layer foreground, characters and a simplified background clearly. Keep the bottom strip relatively calm for possible subtitles, but add no text.\nColor and light: tasteful warm ivory, sage green, indigo and one terracotta accent; gentle daylight, readable skin tones, balanced contrast, softly warm highlights, subtle cooler distant hills. No heavy orange/teal grade, muddy shadows, blown-out bloom, fluorescent colors, visual clutter or aggressive texture. Preserve calm hopeful emotion. All foreground and background objects must follow the selected medium.\nOutput: ONE finished image, preferably 2048x1152 or another native wide 16:9 size supported by the tool. No panels, borders, captions, lettering, logos, watermark, layout guide or interface. This is an illustrative global treatment example, not a specific user's story canon.",
+  "status": "reviewed-for-global-style-selection",
+  "tool": "image_gen.imagegen",
+  "new_call": true,
+  "sha256": "d3781578d0446d52a6d6400736b2f2b3bcee5a667221e7ecb114ac0cbd0eb190",
+  "width": 1672,
+  "height": 941,
+  "mode": "built-in",
+  "pixel_mode": "RGB",
+  "bytes": 2716496,
+  "model": null,
+  "seed": null,
+  "actual_cost": null,
+  "reference_inputs": [],
+  "approved_for_story": false,
+  "rights_status": "not independently verified",
+  "reviewed_at_utc": "2026-10-29T06:07:43+00:00",
+  "review_notes": "Inspected the actual user-supplied PNG: readable rounded faces and expressions, simple black line arms/hands, clothed filled legs and bodies, a clear envelope and detailed warmly lit station. Full figures and feet fit inside frame; no unwanted lettering or conspicuous artifacts at reviewed scale. This is the exact hybrid the user requested, not a pure all-line stick-figure construction. The prior prompt-fidelity concern remains documented in selection_history.",
+  "source_output_filename": "exec-fe4fe3f8-05a7-4646-995a-8f1702159b99.png",
+  "source_filename_role": "Original built-in output provenance. The selected file is the user-supplied PNG encoding of that output; decoded RGB pixels match exactly, while file-byte hashes differ.",
+  "generation_output_sha256": "d86ccc2a1a73c16895b46e3b646feaf0c25667235d4a6d11c99bdce3c5711bdf",
+  "generation_output_bytes": 2231952,
+  "description": "Simple faces and black line arms with clothed bodies in a richly detailed storybook world.",
+  "source_input_filename": "codex-clipboard-17948669-f460-4759-9370-f98e827a11e9.png",
+  "pixel_sha256": "ad4e2ef8119cb991c63c34498d659c1555ffc484e60867f93c7e2b68dfb00d9a",
+  "selection_basis": {
+    "quotation": "this one is missing",
+    "source": "Current user message with attached codex-clipboard-17948669-f460-4759-9370-f98e827a11e9.png",
+    "recorded_at_utc": "2026-10-29T06:07:43+00:00",
+    "scope": "Include this exact example in the global visual preference library."
+  },
+  "selection_history": [
+    {
+      "status": "not-selected-for-primary-gallery",
+      "reviewed_at_utc": "2026-10-29T05:36:22+00:00",
+      "notes": "Study not selected: line arms are present but textured filled legs and naturalistic faces/background do not meet the intended clean stickman construction. Excluded from the lean primary film chooser; custom simple-figure directions remain allowed."
+    },
+    {
+      "status": "included-at-user-request",
+      "recorded_at_utc": "2026-10-29T06:07:43+00:00",
+      "new_generation_calls": 0
+    }
+  ],
+  "tool_request": {
+    "tool": "image_gen.imagegen",
+    "arguments": {
+      "prompt": "Use case: illustration-story\nStyle/medium: A refined STORYBOOK STICKMAN film illustration: deliberately simple, appealing stick-figure people inside a softly detailed illustrated station. Woman and father have clean round light faces, tiny expressive eyes/mouths, simple black bob/silver-hair marks, thin black LINE arms and legs, minimal flat indigo/olive clothing shapes and terracotta scarf accent. Their silhouettes must remain unmistakably stick figures, with no filled anatomical limbs or realistic faces. Show the envelope as a small clear cream shape near the woman's simple hand. The bench, station and hills are tastefully hand-painted with soft depth and selective detail, not photographic microtexture. The contrast between simple figures and a richer storybook environment is deliberate. Elegant poses, readable emotion, uncluttered staging; no crude doodles, extra limbs or busy cobblestones.\n\nAsset: one polished full-frame style reference for story-film production, wide landscape 16:9. Aim for a clear emotionally readable movie still, not a decorative poster.\nScene: a quiet fictional countryside railway platform in soft late-afternoon daylight. A cream plaster station with sage-green window trim and a simple timber canopy recedes into the background; one wooden bench at the right, a restrained glimpse of green hills beyond. Keep the setting spacious and uncluttered; no crowds or train or signs.\nStory moment: a young adult woman has come home and offers her elderly father one small plain cream envelope. She stands at the left facing right; he sits on the bench at the right facing her. Their eyes meet with warm, restrained, relieved smiles. She has warm medium-brown skin, a short wavy dark bob, an indigo jacket over an ivory shirt, a muted terracotta scarf, dark trousers and simple brown boots. He has warm medium-brown skin, short silver hair, an olive cardigan over a cream shirt and charcoal trousers. The envelope is held naturally by the woman at waist height; his hands rest comfortably on his knees. Exactly two people and one envelope. No dramatic reaching hands or complicated finger gestures.\nComposition: medium-wide eye-level two-shot, natural perspective, readable faces and silhouettes; woman visible head to boots, father fully visible seated, both comfortably inside frame. Subjects occupy the central area with breathing room at the edges. Layer foreground, characters and a simplified background clearly. Keep the bottom strip relatively calm for possible subtitles, but add no text.\nColor and light: tasteful warm ivory, sage green, indigo and one terracotta accent; gentle daylight, readable skin tones, balanced contrast, softly warm highlights, subtle cooler distant hills. No heavy orange/teal grade, muddy shadows, blown-out bloom, fluorescent colors, visual clutter or aggressive texture. Preserve calm hopeful emotion. All foreground and background objects must follow the selected medium.\nOutput: ONE finished image, preferably 2048x1152 or another native wide 16:9 size supported by the tool. No panels, borders, captions, lettering, logos, watermark, layout guide or interface. This is an illustrative global treatment example, not a specific user's story canon.",
+      "transparent_background": false
+    }
+  }
+}

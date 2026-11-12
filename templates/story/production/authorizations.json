@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "reference_work": {"status": "draft", "decision_quote": null, "tools": [], "limit": 0, "currency": "USD"},
+  "audition_work": {"status": "draft", "decision_quote": null, "tools": [], "limit": 0, "currency": "USD"},
+  "external_upload": {"status": "draft", "decision_quote": null, "tools": [], "scope": "Story excerpts and selected references; confirm permitted content and provider"},
+  "final_production_budget": {"limit": 0, "currency": "USD", "basis": null}
+}

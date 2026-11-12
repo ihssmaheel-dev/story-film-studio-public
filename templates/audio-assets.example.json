@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "assets": {
+    "AUD-001": {
+      "file": "ambience/wind.wav",
+      "sha256": null,
+      "kind": "ambience",
+      "source": {
+        "method": "procedural",
+        "tool_or_creator": null,
+        "prompt_or_parameters": null,
+        "source_url": null,
+        "license_or_terms": null,
+        "retrieved_or_generated_at": null
+      },
+      "rights_status": "unverified",
+      "rights_evidence": null,
+      "qa_status": "pending",
+      "qa_notes": null
+    }
+  }
+}

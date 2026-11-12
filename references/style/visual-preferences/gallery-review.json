@@ -1,0 +1,218 @@
+{
+  "renderer": "Playwright / installed Chrome (Chromium), channel chrome, headless",
+  "browserVersion": "156.0.8078.48",
+  "source": "gallery.html",
+  "method": "Browser layout and labels around unchanged generated PNG originals; no scene-image editing.",
+  "checkedAt": "2026-10-29T06:34:53.457Z",
+  "observations": [
+    {
+      "name": "overview",
+      "width": 1920,
+      "colorScheme": "light",
+      "images": 8,
+      "decoded": true,
+      "visibleCards": 8,
+      "horizontalOverflow": false,
+      "height": 1214,
+      "gridColumns": "446.5px 446.5px 446.5px 446.5px",
+      "fullSizeLinks": [
+        {
+          "href": "images/realistic-cinema.png",
+          "label": "Open Realistic Cinema full size"
+        },
+        {
+          "href": "images/detailed-cinematic-anime.png",
+          "label": "Open Detailed Cinematic Anime full size"
+        },
+        {
+          "href": "images/cel-shaded-anime.png",
+          "label": "Open Cel-Shaded Anime full size"
+        },
+        {
+          "href": "images/2d-cartoon.png",
+          "label": "Open Feature 2D Animation full size"
+        },
+        {
+          "href": "images/stylized-3d.png",
+          "label": "Open Stylized 3D Animation full size"
+        },
+        {
+          "href": "images/painted-storybook.png",
+          "label": "Open Painted Storybook full size"
+        },
+        {
+          "href": "images/storybook-stickman.png",
+          "label": "Open Storybook Stickman full size"
+        },
+        {
+          "href": "images/graphic-novel.png",
+          "label": "Open Cinematic Graphic Novel full size"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "colorScheme": "light",
+      "images": 8,
+      "decoded": true,
+      "visibleCards": 8,
+      "horizontalOverflow": false,
+      "height": 2715,
+      "gridColumns": "671px 671px",
+      "fullSizeLinks": [
+        {
+          "href": "images/realistic-cinema.png",
+          "label": "Open Realistic Cinema full size",
+          "openedOriginal": {
+            "width": 1672,
+            "height": 941
+          }
+        },
+        {
+          "href": "images/detailed-cinematic-anime.png",
+          "label": "Open Detailed Cinematic Anime full size"
+        },
+        {
+          "href": "images/cel-shaded-anime.png",
+          "label": "Open Cel-Shaded Anime full size"
+        },
+        {
+          "href": "images/2d-cartoon.png",
+          "label": "Open Feature 2D Animation full size"
+        },
+        {
+          "href": "images/stylized-3d.png",
+          "label": "Open Stylized 3D Animation full size"
+        },
+        {
+          "href": "images/painted-storybook.png",
+          "label": "Open Painted Storybook full size"
+        },
+        {
+          "href": "images/storybook-stickman.png",
+          "label": "Open Storybook Stickman full size"
+        },
+        {
+          "href": "images/graphic-novel.png",
+          "label": "Open Cinematic Graphic Novel full size",
+          "openedOriginal": {
+            "width": 1672,
+            "height": 941
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "colorScheme": "light",
+      "images": 8,
+      "decoded": true,
+      "visibleCards": 8,
+      "horizontalOverflow": false,
+      "height": 3890,
+      "gridColumns": "358px",
+      "fullSizeLinks": [
+        {
+          "href": "images/realistic-cinema.png",
+          "label": "Open Realistic Cinema full size"
+        },
+        {
+          "href": "images/detailed-cinematic-anime.png",
+          "label": "Open Detailed Cinematic Anime full size"
+        },
+        {
+          "href": "images/cel-shaded-anime.png",
+          "label": "Open Cel-Shaded Anime full size"
+        },
+        {
+          "href": "images/2d-cartoon.png",
+          "label": "Open Feature 2D Animation full size"
+        },
+        {
+          "href": "images/stylized-3d.png",
+          "label": "Open Stylized 3D Animation full size"
+        },
+        {
+          "href": "images/painted-storybook.png",
+          "label": "Open Painted Storybook full size"
+        },
+        {
+          "href": "images/storybook-stickman.png",
+          "label": "Open Storybook Stickman full size"
+        },
+        {
+          "href": "images/graphic-novel.png",
+          "label": "Open Cinematic Graphic Novel full size"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "dark",
+      "width": 1200,
+      "colorScheme": "dark",
+      "images": 8,
+      "decoded": true,
+      "visibleCards": 8,
+      "horizontalOverflow": false,
+      "height": 2461,
+      "gridColumns": "551px 551px",
+      "fullSizeLinks": [
+        {
+          "href": "images/realistic-cinema.png",
+          "label": "Open Realistic Cinema full size"
+        },
+        {
+          "href": "images/detailed-cinematic-anime.png",
+          "label": "Open Detailed Cinematic Anime full size"
+        },
+        {
+          "href": "images/cel-shaded-anime.png",
+          "label": "Open Cel-Shaded Anime full size"
+        },
+        {
+          "href": "images/2d-cartoon.png",
+          "label": "Open Feature 2D Animation full size"
+        },
+        {
+          "href": "images/stylized-3d.png",
+          "label": "Open Stylized 3D Animation full size"
+        },
+        {
+          "href": "images/painted-storybook.png",
+          "label": "Open Painted Storybook full size"
+        },
+        {
+          "href": "images/storybook-stickman.png",
+          "label": "Open Storybook Stickman full size"
+        },
+        {
+          "href": "images/graphic-novel.png",
+          "label": "Open Cinematic Graphic Novel full size"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "visualInspection": {
+    "performed_at_utc": "2026-10-29T06:36:37+00:00",
+    "method": "Actual view_image inspection of the updated comparison and mobile screenshots.",
+    "screenshots": [
+      {
+        "file": "references/style/visual-preferences/comparison-sheet.png",
+        "sha256": "e3f202a3ecf8df06b11c0941a5f96b24e845433c01ed8afbe19c242790c2092f",
+        "notes": "All eight complete images are present in a four-column/two-row overview, including the newly added Cinematic Graphic Novel. Readable labels, full figures, no overlap or clipping."
+      },
+      {
+        "file": ".runtime/gallery-add-graphic-novel-20261029/mobile-preview.png",
+        "sha256": "7ef1cb7b740cb5347de819529e94bcf9461ca4c2e25c24730f32399fafbfe5ac",
+        "notes": "Eight stacked cards, including VIS-06, display complete frames with readable names and text; no overlapping content or horizontal clipping."
+      }
+    ],
+    "limits": "Dark and desktop were measured by the browser; visual screenshot inspection in this update covered overview and mobile. This is global chooser QA, not story production approval."
+  }
+}

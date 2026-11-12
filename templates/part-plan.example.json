@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "story_file": "creative/original.md",
+  "story_sha256": "REPLACE_WITH_ACTUAL_AUTHORITATIVE_STORY_HASH",
+  "parts": [
+    {
+      "id": "part_001",
+      "title": "Actual first part title",
+      "start_line": 1,
+      "end_line": 10,
+      "opening_hook": "Describe the actual opening hook from the complete story.",
+      "dramatic_progress": "Describe this part's real dramatic change.",
+      "ending": "Describe its earned ending and consequences.",
+      "entry_state": {"CHAR-001": {"knows_secret": false}},
+      "exit_state": {"CHAR-001": {"knows_secret": true}},
+      "pays_off": [],
+      "continuation": {
+        "id": "PROMISE-001",
+        "next_part": "part_002",
+        "promise": "The actual unresolved consequence inviting continuation.",
+        "payoff": "How the next part develops that consequence."
+      }
+    },
+    {
+      "id": "part_002",
+      "title": "Actual concluding part title",
+      "start_line": 11,
+      "end_line": 20,
+      "opening_hook": "An opening that develops the preceding ending.",
+      "dramatic_progress": "The story's actual progression and climax.",
+      "ending": "The actual overall resolution.",
+      "entry_state": {"CHAR-001": {"knows_secret": true}},
+      "exit_state": {"CHAR-001": {"knows_secret": true}},
+      "pays_off": ["PROMISE-001"],
+      "continuation": null
+    }
+  ]
+}

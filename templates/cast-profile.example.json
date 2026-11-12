@@ -1,0 +1,27 @@
+{
+  "name": "Mara (structural example only)",
+  "revision": "r1",
+  "style_id": "STYLE-001",
+  "style_revision": "r1",
+  "role": "A retired navigator deciding whether to guide her estranged child home. Replace with the actual story role, relationships and history.",
+  "age_or_life_stage": "Early sixties; preserve any author-specified age.",
+  "design_type": "Human, adapted to the exact chosen visual treatment; other species and abstract characters remain valid.",
+  "personality": "Reserved, observant and patient; warmth appears in small changes of posture and gaze.",
+  "appearance": "Broad forehead, short silver curls and a distinctive asymmetric brow. Define actual face/head, hair/surface, eyes and identifying details for this story.",
+  "proportions": "Compact, grounded silhouette; slightly rounded shoulders. Follow the selected medium's anatomy rules.",
+  "wardrobe": "Practical navy wool coat, cream shirt, dark trousers and worn brown boots. Record exact materials, colors and accessories.",
+  "relative_scale": "A little shorter than the adult child; preserve this relationship in shared shots.",
+  "expression_system": "Restrained brows and mouth, readable gaze. In simple-face media use the actual available marks, not realistic features.",
+  "identity_anchors": ["Asymmetric brow", "Short silver curls", "Compact navy-coat silhouette"],
+  "views": ["front full body", "three-quarter full body"],
+  "expressions": {
+    "neutral": "Quietly attentive, mouth relaxed, eyes focused.",
+    "restrained grief": "Softened gaze and a small downward mouth movement; preserve age and face construction."
+  },
+  "poses": {
+    "standing": "Balanced weight, familiar slight shoulder curve, hands relaxed.",
+    "seated listening": "Leaning forward slightly, maintaining the same body proportions and costume."
+  },
+  "state_variants": {},
+  "reference_notes": "Example, not a preset or story canon. Choose only useful views, expressions and poses from the complete source. Split a dense sheet only when necessary for legibility and within the actual call/budget scope."
+}

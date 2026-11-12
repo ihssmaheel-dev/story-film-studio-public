@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "title": "Eight looks for story films",
+  "selection_key": "descriptive name / stable ID + exact selected image SHA-256",
+  "scope": "Curated starting points; custom styles remain welcome. Not story-specific canon.",
+  "styles": [
+    {
+      "id": "VIS-01",
+      "name": "Realistic Cinema",
+      "file": "images/realistic-cinema.png",
+      "description": "Natural faces, believable materials and restrained live-action light.",
+      "family": "Realistic",
+      "best_for": "Drama · mystery · grounded adventure",
+      "sha256": "c6b1abc1bb2bc99889ef9333c8ca25b9f75889c9ad2d41633c6895bdbea32339"
+    },
+    {
+      "id": "VIS-21",
+      "name": "Detailed Cinematic Anime",
+      "file": "images/detailed-cinematic-anime.png",
+      "description": "Fine drawn characters, layered shading and richly painted settings.",
+      "family": "Drawn",
+      "best_for": "Adventure · fantasy · emotional drama",
+      "sha256": "df142b03797e035d340c07159fc8daaccb20bda04e4fcc9a1452a221c5cc87dd"
+    },
+    {
+      "id": "VIS-02",
+      "name": "Cel-Shaded Anime",
+      "file": "images/cel-shaded-anime.png",
+      "description": "Clean anime contours, broad color areas and graphic cel shadows.",
+      "family": "Drawn",
+      "best_for": "Stylized action · series · clear expressions",
+      "sha256": "32a3d61e90f874f126e9dedb98556cbc780b76ae9474b4eba2570d2d34555339"
+    },
+    {
+      "id": "VIS-04",
+      "name": "Feature 2D Animation",
+      "file": "images/2d-cartoon.png",
+      "description": "Expressive rounded cartoon designs in a cohesive animation world.",
+      "family": "Drawn",
+      "best_for": "Family · comedy · character-led stories",
+      "sha256": "fbb720afb952d9cffb2e46658e877b55a0ddae154bdd2df68ffd08c7be8a28df"
+    },
+    {
+      "id": "VIS-05",
+      "name": "Stylized 3D Animation",
+      "file": "images/stylized-3d.png",
+      "description": "Sculpted characters, tactile materials and soft bounced illumination.",
+      "family": "Dimensional",
+      "best_for": "Family · adventure · accessible drama",
+      "sha256": "d02581f4cca1ba569eca79bdc4851b763e46879037d3c9c3bfd2abd746ef4b96"
+    },
+    {
+      "id": "VIS-07",
+      "name": "Painted Storybook",
+      "file": "images/painted-storybook.png",
+      "description": "Visible gouache brushwork and simplified illustrated shapes.",
+      "family": "Painted",
+      "best_for": "Fables · gentle drama · narrated adventures",
+      "sha256": "bdf496b571df9407cc0d768088c3576516c8c6a5bf92bc86a9c6320d62bc6ebb"
+    },
+    {
+      "id": "VIS-22",
+      "name": "Storybook Stickman",
+      "file": "images/storybook-stickman.png",
+      "description": "Simple faces and black line arms with clothed bodies in a richly detailed storybook world.",
+      "family": "Hybrid figures",
+      "best_for": "Narrated fables · simple characters with rich settings",
+      "sha256": "d3781578d0446d52a6d6400736b2f2b3bcee5a667221e7ecb114ac0cbd0eb190"
+    },
+    {
+      "id": "VIS-06",
+      "name": "Cinematic Graphic Novel",
+      "file": "images/graphic-novel.png",
+      "description": "Confident ink contours, expressive adult faces and strong graphic shadow shapes.",
+      "family": "Inked",
+      "best_for": "Action · mystery · dramatic adventures",
+      "sha256": "aeb5c91f1d5eb086d2329255d881cbd57a8ba473c2bd22d3f2dcd4dce7181f28"
+    }
+  ]
+}

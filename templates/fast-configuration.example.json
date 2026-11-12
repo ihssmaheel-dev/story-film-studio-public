@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "workflow": {
+    "schema_version": 1,
+    "mode": "fast",
+    "task": "film",
+    "audit": "focused",
+    "minor_edits": "delegate",
+    "scope": {
+      "tools": ["kokoro", "procedural-audio", "provided-audio"],
+      "budget": {"limit": 0, "currency": "USD"},
+      "external_upload": [],
+      "download_domains": []
+    }
+  },
+  "intake": {
+    "story_complete": null,
+    "mode": "single",
+    "continuous_edition": true,
+    "duration_policy": {"flexible": true},
+    "language": "en-us",
+    "performance": "narration",
+    "visual_style": null,
+    "frame_format": "landscape",
+    "subtitles": true
+  },
+  "narrator": {"provider": "kokoro", "model": null, "voice": null, "language": "en-us", "speed": 1.0, "pause": 0.15, "providers": {}, "cast": {}},
+  "settings": {"image_provider": {"estimated_cost_per_image": null, "currency": "USD"}},
+  "style_references": []
+}

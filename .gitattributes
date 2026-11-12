@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+# Keep the user's original instructions byte-for-byte, including line endings.
+instructions/source/screenplay-audit-original.txt -text
+# Story approvals and manifests bind exact file bytes across checkouts.
+/stories/** -text

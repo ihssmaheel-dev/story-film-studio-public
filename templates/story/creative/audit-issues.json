@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "revision": "r1",
+  "source_sha256": null,
+  "final_story_sha256": null,
+  "assessment": null,
+  "findings": [],
+  "scene_reviews": {},
+  "global_continuity": null,
+  "unresolved_questions": [],
+  "runtime_assessment": null,
+  "verdict": null
+}

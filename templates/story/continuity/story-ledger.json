@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "draft",
+  "source_sha256": null,
+  "scenes": [],
+  "chronology": [],
+  "character_knowledge": [],
+  "motivations_and_relationships": [],
+  "objects_and_physical_states": [],
+  "rules_and_verification": [],
+  "setups_and_payoffs": [],
+  "open_questions": [],
+  "review_coverage": {
+    "full_read_complete": false,
+    "second_pass_complete": false,
+    "focused_check_complete": false,
+    "checked_story_sha256": null,
+    "audit_areas_reviewed": [],
+    "reviewed_scene_ids": [],
+    "unavailable_ranges": []
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": 2,
+  "part_id": "part_001",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration": 11.2,
+  "narration_file": "audio/narration.wav",
+  "narration_start": 0.0,
+  "narration_gain_db": 0.0,
+  "audio_file": "audio/final_mix.wav",
+  "audio_manifest": "../../audio/assets.json",
+  "alignment": {
+    "status": "draft",
+    "method": null,
+    "source_sha256": null,
+    "confidence": null,
+    "uncertain_ranges": [],
+    "manual_checks": []
+  },
+  "shots": [
+    {
+      "id": "SHOT-001",
+      "scene_ids": [
+        "SCENE-001"
+      ],
+      "style_id": "STYLE-001",
+      "style_revision": "r1",
+      "image": "images/shot_001.png",
+      "start": 0.0,
+      "end": 4.2,
+      "location_id": "LOC-001",
+      "character_ids": [],
+      "prop_ids": [
+        "PROP-014",
+        "PROP-015"
+      ],
+      "narration": "The street was empty.",
+      "motion": {"type": "static", "reason": "Let the viewer read the establishing scene."}
+    },
+    {
+      "id": "SHOT-002",
+      "scene_ids": [
+        "SCENE-001"
+      ],
+      "style_id": "STYLE-001",
+      "style_revision": "r1",
+      "image": "images/shot_002.png",
+      "start": 4.2,
+      "end": 11.2,
+      "location_id": "LOC-001",
+      "character_ids": [
+        "CHAR-001"
+      ],
+      "prop_ids": [
+        "PROP-014",
+        "PROP-015"
+      ],
+      "narration": "But the speaker had been waiting.",
+      "motion": {
+        "type": "zoom_in",
+        "reason": "Focus attention on the story subject after the establishing hold.",
+        "start": {"zoom": 1.0, "center": [0.5, 0.5]},
+        "end": {"zoom": 1.08, "center": [0.5, 0.5]},
+        "easing": "smoothstep",
+        "start_at": 0.15,
+        "end_at": 0.85,
+        "protected_regions": [{"id": "story-focus", "box": [0.25, 0.10, 0.75, 0.90]}]
+      }
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0.3,
+      "end": 2.3,
+      "text": "The street was empty."
+    },
+    {
+      "start": 4.5,
+      "end": 8.1,
+      "text": "But the speaker had been waiting."
+    }
+  ],
+  "audio_cues": [
+    {
+      "id": "CUE-001",
+      "asset_id": "AUD-001",
+      "role": "ambience",
+      "start": 0.0,
+      "end": 11.2,
+      "source_offset": 0.0,
+      "gain_db": -24.0,
+      "fade_in": 0.6,
+      "fade_out": 0.6,
+      "loop": true,
+      "duck_under_narration": true
+    }
+  ],
+  "scale_filter": "lanczos"
+}

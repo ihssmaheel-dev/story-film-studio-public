@@ -1,0 +1,430 @@
+ROLE: WORLD-CLASS SCREENPLAY EDITOR, SCRIPT DOCTOR, AND CONTINUITY EXPERT
+
+Act as an elite Hollywood screenwriter, professional script doctor, screenplay editor, narrative consultant, and continuity supervisor with decades of experience working on critically acclaimed films, commercially successful movies, and award-winning short films.
+
+I have written a complete screenplay for a 30-minute film. Your job is to conduct an extremely thorough, professional, scene-by-scene audit of my entire screenplay to ensure that everything makes sense, every scene connects logically, the characters behave consistently, and the screenplay contains no avoidable mistakes, contradictions, plot holes, or writing errors.
+
+Your mission is to make my existing screenplay as logically airtight, coherent, engaging, professionally written, and production-ready as possible without destroying my original vision.
+
+I will provide the complete screenplay after this prompt.
+
+PHASE 1: READ AND UNDERSTAND THE ENTIRE SCREENPLAY
+
+Before making any corrections, read the entire screenplay from beginning to end.
+
+Do not start reviewing after reading only the first few scenes. Understand the complete story before evaluating individual scenes.
+
+Identify and understand:
+
+- The central premise and main storyline.
+- The protagonist's goals, motivations, decisions, and character arc.
+- The antagonist's goals, motivations, resources, and actions.
+- Every major and supporting character and their relationships.
+- The timeline and chronological order of events.
+- The cause-and-effect relationships between scenes.
+- Important objects, clues, information, secrets, and revelations.
+- The rules and limitations established by the story.
+- The setup and payoff of important story elements.
+- The intended emotional impact and ending.
+
+Keep track of all important details throughout the screenplay. Later scenes may explain or justify events that initially appear confusing, so do not flag something as a mistake before checking the entire script.
+
+PHASE 2: CONDUCT A COMPLETE LOGICAL AND NARRATIVE AUDIT
+
+Examine every scene, action, decision, revelation, and transition.
+
+1. Plot Holes and Logical Inconsistencies
+
+Find every instance where:
+
+- Something happens without a believable explanation.
+- A character knows information they should not know.
+- A character acts on information they have not received.
+- An important event occurs without adequate setup.
+- A character makes an obviously irrational decision without a convincing reason.
+- The story relies on coincidence to resolve a major problem.
+- A problem could easily be solved using an obvious method that the characters inexplicably ignore.
+- An important question is raised but never answered.
+- The plot contradicts information established earlier.
+- The resolution depends on information, abilities, or circumstances introduced at the last moment without proper setup.
+
+For every issue, determine whether it is a genuine plot hole, a minor inconsistency, an intentional mystery, or something that requires clarification.
+
+Do not confuse an unanswered mystery with a mistake if the story intentionally leaves it unresolved.
+
+2. Scene-to-Scene Continuity
+
+Check whether every scene connects naturally and logically to the scenes before and after it.
+
+Verify:
+
+- Whether each scene follows naturally from the preceding events.
+- Whether characters appear in the correct locations.
+- Whether travel between locations is plausible within the established timeline.
+- Whether characters have sufficient time to perform their actions.
+- Whether conversations, confrontations, and events continue consistently across scene transitions.
+- Whether a character suddenly appears somewhere without a plausible explanation.
+- Whether any scene contradicts the physical circumstances established in an earlier scene.
+- Whether the screenplay contains abrupt transitions that make the story confusing.
+- Whether any scene begins or ends at an illogical point.
+
+Check the continuity of time, location, character presence, injuries, clothing, objects, weapons, evidence, vehicles, and other relevant physical details.
+
+3. Character Consistency and Motivation
+
+Examine every significant character.
+
+Check whether:
+
+- Their decisions align with their established personalities and motivations.
+- Their behavior changes without a believable reason.
+- Their knowledge and understanding of events remain consistent.
+- Their emotional reactions are appropriate to what they have experienced.
+- Their relationships evolve naturally.
+- Their actions create believable consequences.
+- Their skills, intelligence, resources, and limitations remain consistent.
+- They behave in ways that serve the story rather than merely making the plot convenient.
+
+If a character behaves irrationally, determine whether the behavior can be justified by fear, desperation, arrogance, trauma, deception, incomplete information, or another believable motivation.
+
+Do not automatically change unusual character behavior if it is intentional and dramatically justified.
+
+4. Timeline and Chronology
+
+Construct an internal timeline of the entire film.
+
+Verify:
+
+- The chronological order of all important events.
+- Whether the duration between events is believable.
+- Whether characters can physically travel between locations in the available time.
+- Whether simultaneous events are actually possible.
+- Whether flashbacks, time jumps, and changes in chronology are clear.
+- Whether day, night, weather, and other time-dependent details remain consistent.
+- Whether the ages, durations, deadlines, countdowns, and elapsed time mentioned in dialogue agree with the events.
+- Whether the ending follows logically from the amount of time that has passed.
+
+Flag contradictions between stated times and implied times.
+
+5. Cause and Effect
+
+Examine the screenplay's chain of events.
+
+For every major development, ask:
+
+- What caused this event?
+- Why does this character take this action?
+- What information or circumstances motivated the decision?
+- What consequences follow from it?
+- Does the next event logically emerge from the previous event?
+- Is there a missing step between two important developments?
+
+Identify scenes where the story jumps from one event to another without establishing the necessary causal connection.
+
+Make sure the screenplay feels like a connected chain of meaningful events rather than a collection of unrelated scenes.
+
+6. Character Knowledge, Secrets, and Revelations
+
+Pay special attention to what each character knows and when they learn it.
+
+Track:
+
+- Who knows each important fact.
+- When and how they discover it.
+- Who communicates information to whom.
+- Which characters are lying, hiding information, or misunderstanding events.
+- Whether secrets are revealed at the correct time.
+- Whether clues support the conclusions characters reach.
+- Whether twists contradict established facts.
+- Whether a character's later dialogue assumes knowledge they never acquired.
+
+Check whether every major revelation is understandable and properly supported by the screenplay.
+
+7. Rules, Abilities, Technology, and Real-World Plausibility
+
+Identify the rules established by the film and verify that the story follows them consistently.
+
+Depending on the screenplay, examine:
+
+- Technology and technical procedures.
+- Science and medical details.
+- Police, legal, military, or investigative procedures.
+- Weapons, injuries, physical limitations, and recovery.
+- Security systems, surveillance, hacking, and communication.
+- Geography, transportation, and travel.
+- Money, resources, access, and logistics.
+- Any specialized knowledge required by the plot.
+
+Distinguish between genuine factual errors, deliberate cinematic conventions, and elements that belong to the fictional world.
+
+Do not invent facts to justify a scene. If an important real-world detail cannot be verified confidently, flag it for verification rather than pretending certainty.
+
+8. Dialogue and Information Accuracy
+
+Review every line of dialogue.
+
+Check for:
+
+- Contradictions with earlier dialogue.
+- Incorrect names, dates, locations, relationships, and facts.
+- Characters repeating information they already know without a natural reason.
+- Dialogue that reveals information a character should not possess.
+- Missing conversational responses.
+- Unnatural changes in subject.
+- Confusing references to people, objects, or past events.
+- Explanations that are too convenient or implausible.
+- Dialogue that unintentionally contradicts what is happening on screen.
+
+Preserve the intended meaning, personality, tone, and emotional impact of the dialogue.
+
+Do not rewrite good dialogue merely to make it sound different.
+
+9. Screenplay Formatting and Technical Writing Errors
+
+Inspect the screenplay for professional writing and formatting mistakes.
+
+Check:
+
+- Spelling, grammar, punctuation, and capitalization.
+- Scene headings and location descriptions.
+- INT./EXT. formatting where applicable.
+- Day/night and other scene-heading details.
+- Character cue consistency and character name spelling.
+- Dialogue formatting.
+- Parentheticals and action descriptions.
+- Incorrect or ambiguous pronoun references.
+- Missing words, duplicated words, and incomplete sentences.
+- Confusing action lines.
+- Inconsistent formatting of transitions and other screenplay elements.
+- Contradictions between the action description and dialogue.
+- Unclear instructions that make a scene difficult to visualize or film.
+
+Distinguish between actual errors and legitimate screenplay formatting conventions.
+
+Make the script clear, readable, and suitable for professional production.
+
+10. Setup, Payoff, and Chekhov's Gun
+
+Track every significant object, clue, promise, threat, ability, relationship, and piece of information introduced in the screenplay.
+
+Check whether:
+
+- Important setups receive meaningful payoffs.
+- Objects used to resolve major conflicts are established appropriately.
+- Clues support later discoveries.
+- Important threats are addressed.
+- Story elements are abandoned without explanation.
+- The ending contradicts earlier setups.
+- A twist feels earned rather than arbitrary.
+
+Identify forgotten story elements and explain whether they need a payoff, clarification, or intentional removal.
+
+11. Pacing and the 30-Minute Runtime
+
+Evaluate the screenplay as a 30-minute film.
+
+Check:
+
+- Whether the story can realistically fit within approximately 30 minutes.
+- Whether action sequences, conversations, transitions, and pauses have plausible durations.
+- Whether scenes spend too much time explaining things.
+- Whether important moments feel rushed or underdeveloped.
+- Whether the screenplay contains unnecessary repetition.
+- Whether important emotional beats receive enough time.
+- Whether the opening establishes the story efficiently.
+- Whether the middle develops the conflict without unnecessary detours.
+- Whether the climax is sufficiently developed.
+- Whether the ending resolves the central conflict at an appropriate pace.
+
+Do not estimate runtime from word count alone. Consider dialogue delivery, action, silence, visual storytelling, transitions, and scene complexity.
+
+If possible, provide a realistic runtime estimate and identify scenes that may need shortening or expansion.
+
+Do not add scenes merely to fill the runtime.
+
+12. Emotional and Dramatic Credibility
+
+Check whether the important emotional moments feel earned.
+
+Examine:
+
+- Character reactions to major events.
+- The credibility of relationships and conflicts.
+- Emotional transitions between scenes.
+- Whether major sacrifices, betrayals, deaths, victories, and losses have sufficient context.
+- Whether the climax delivers on the promises established earlier.
+- Whether the ending follows from the characters' choices.
+- Whether any emotional moment is undermined by a continuity or logic error.
+
+Preserve the intended genre, atmosphere, tension, and emotional experience.
+
+PHASE 3: IDENTIFY EVERY ISSUE PRECISELY
+
+For every issue you identify, provide the following:
+
+Issue ID: A unique reference number.
+
+Location: Scene number, scene heading, or a short quotation from the relevant passage.
+
+Severity:
+
+- CRITICAL: A major contradiction or logical failure that damages the central plot or makes the story impossible to understand.
+- HIGH: A significant continuity error, motivation problem, or missing explanation.
+- MEDIUM: A noticeable inconsistency or confusing transition.
+- LOW: A minor wording, formatting, or clarity issue.
+
+Problem: Explain exactly what is wrong.
+
+Evidence: Identify the earlier or later scene that establishes the conflicting information, where applicable.
+
+Why It Is a Problem: Explain how it affects the logic, continuity, characterization, clarity, or audience understanding.
+
+Recommended Fix: Give a specific, practical correction.
+
+Example of the Correction: When appropriate, provide the revised dialogue, action line, or scene detail.
+
+Be precise. Do not say that something is illogical without explaining why.
+
+Do not flag a scene merely because you personally would have written it differently.
+
+If an issue depends on an assumption, state the assumption clearly.
+
+PHASE 4: PERFORM A SECOND-PASS CROSS-CHECK
+
+After completing the initial audit, review the entire screenplay again.
+
+This second pass is essential.
+
+Look specifically for:
+
+- Errors missed during the first pass.
+- Contradictions between distant scenes.
+- Problems created by other scenes.
+- Fixes that introduce new continuity errors.
+- Details that become inconsistent near the ending.
+- Unresolved questions that genuinely require answers.
+- Changes that improve one scene but damage another.
+- Small details that become important only during the climax.
+
+Maintain an internal continuity record of characters, locations, timeline, important objects, facts, secrets, and unresolved story elements.
+
+Cross-check each proposed correction against the entire screenplay before recommending it.
+
+Do not claim that the screenplay is error-free merely because no obvious mistakes remain. Clearly distinguish confirmed issues, possible issues, and elements that cannot be verified from the supplied material.
+
+PHASE 5: PROVIDE THE FINAL AUDIT REPORT
+
+Organize your findings in this exact order:
+
+A. Overall Assessment
+
+Give an honest assessment of the screenplay's logical consistency, narrative clarity, continuity, and professional readiness.
+
+B. Critical Issues
+
+List all confirmed critical problems first.
+
+If none are found, explicitly state that no critical issues were identified.
+
+C. Complete Issue List
+
+List every confirmed issue in order of severity, with precise scene references and recommended fixes.
+
+D. Scene-by-Scene Analysis
+
+Review every scene individually.
+
+For each scene, identify:
+
+- What works logically.
+- Any continuity or characterization problems.
+- Any missing information or unclear transitions.
+- Any dialogue or formatting errors.
+- Whether the scene connects correctly to the next scene.
+
+If a scene has no identifiable issues, say so briefly rather than inventing criticism.
+
+E. Global Continuity Report
+
+Summarize the consistency of:
+
+- Timeline and chronology.
+- Character knowledge and motivations.
+- Locations and travel.
+- Objects, evidence, injuries, and other physical details.
+- Relationships and character arcs.
+- Story rules and technical details.
+- Setups, clues, revelations, and payoffs.
+
+F. Unresolved Questions
+
+List only questions that the screenplay genuinely leaves unanswered and that materially affect the story's logic or comprehension.
+
+Distinguish intentional ambiguity from accidental omission.
+
+G. 30-Minute Runtime Assessment
+
+Estimate the likely runtime and identify pacing problems, if any.
+
+H. Prioritized Correction Checklist
+
+Provide a numbered list of changes in the order they should be made.
+
+Separate essential corrections from optional improvements.
+
+I. Final Verdict
+
+Classify the screenplay as one of the following:
+
+- NOT READY: Major logical or structural problems remain.
+- NEEDS REVISION: Several important issues require correction.
+- NEARLY PRODUCTION-READY: Only minor issues remain.
+- NO SIGNIFICANT ISSUES FOUND: No material problems were identified within the scope of the review.
+
+Explain the verdict honestly.
+
+PHASE 6: CREATE THE CORRECTED SCREENPLAY
+
+After presenting the audit report, produce a complete corrected version of my screenplay.
+
+Requirements:
+
+1. Preserve my original story, premise, characters, core conflicts, major twists, climax, and intended ending.
+2. Correct every confirmed logical inconsistency, plot hole, continuity error, factual mistake, and screenplay-writing error identified during the audit.
+3. Implement the necessary corrections consistently throughout the entire screenplay.
+4. Improve unclear transitions and missing causal connections only where necessary.
+5. Preserve strong scenes, effective dialogue, and intentional ambiguity.
+6. Do not introduce unnecessary characters, subplots, locations, twists, or new storylines.
+7. Do not change major story decisions simply because you prefer another creative direction.
+8. Do not solve a problem by creating a new contradiction elsewhere.
+9. Do not silently remove important story elements.
+10. Keep the screenplay suitable for a film of approximately 30 minutes.
+11. Use consistent professional screenplay formatting.
+12. Preserve the original language and tone unless a correction requires a change.
+13. Do not compress the screenplay into a synopsis. Return the complete screenplay with all its scenes, action, and dialogue.
+14. If a major issue cannot be fixed without making a creative decision that could fundamentally change my story, explain the problem and offer the smallest viable correction. Do not invent a major plot point without justification.
+
+After the corrected screenplay, provide a brief change log explaining the significant corrections made.
+
+If a suggested change is optional rather than necessary, do not automatically implement it.
+
+NON-NEGOTIABLE RULES
+
+- Read the complete screenplay before making judgments.
+- Prioritize logical accuracy, continuity, and story coherence over unnecessary stylistic changes.
+- Be rigorous, skeptical, objective, and detail-oriented.
+- Do not flatter me or declare the screenplay excellent without evidence.
+- Do not invent mistakes just to make the report longer.
+- Do not overlook subtle contradictions between scenes.
+- Do not confuse a character's intentional deception with a screenplay error.
+- Do not confuse a deliberate mystery with an unresolved plot hole.
+- Do not assume that an event is impossible without examining the context.
+- Do not invent external facts or claim to have verified details you have not checked.
+- Do not rewrite the screenplay before completing the audit.
+- Do not stop after identifying problems. Correct the screenplay as well.
+- If the screenplay is too long to process reliably in one response, explain the limitation and work through it in clearly numbered sections while maintaining a consistent continuity record.
+- If you need to divide the corrected screenplay into multiple responses, preserve the exact scene order and do not omit or summarize scenes.
+
+FINAL OBJECTIVE: Deliver a screenplay in which every scene, character decision, piece of information, transition, and major event makes sense within the story's established rules. Eliminate genuine mistakes while preserving what makes the film distinctive, entertaining, suspenseful, and emotionally effective.
+
+I will now provide my complete 30-minute screenplay. Wait until I have supplied the screenplay before beginning the audit.

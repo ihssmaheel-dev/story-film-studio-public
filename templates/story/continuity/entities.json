@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "styles": {
+    "STYLE-001": {
+      "canonical_file": "world/visual-bible.md",
+      "revision": "r1",
+      "status": "draft",
+      "reference_paths": [],
+      "inspiration_paths": []
+    }
+  },
+  "characters": {},
+  "locations": {},
+  "props": {}
+}

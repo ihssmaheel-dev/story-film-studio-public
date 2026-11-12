@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "story_file": "creative/original.md",
+  "story_sha256": "REPLACE_WITH_ACTUAL_FINAL_STORY_SHA256",
+  "rationale": "Structural illustration only: the first view establishes the locked door and the second reveals the key. The actual story and measured performance determine the number and length of holds; this is not a two-shot preset.",
+  "shots": [
+    {
+      "shot_id": "SHOT-001",
+      "purpose": "Establish the locked door and the character's immediate problem without exposing the hidden key.",
+      "entry_reason": "Open on the obstacle; retain this view through the search while its visual state remains true."
+    },
+    {
+      "shot_id": "SHOT-002",
+      "purpose": "Make the discovery of the key readable and show the character's change from doubt to hope.",
+      "entry_reason": "Cut at the discovery, when the new information and reaction need a closer view."
+    }
+  ]
+}

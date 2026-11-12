@@ -1,0 +1,265 @@
+{
+  "schema_version": 3,
+  "catalog_id": "story-film-studio-visual-preferences",
+  "catalog_title": "Eight looks for story films",
+  "recorded_at": "2026-10-29T06:36:37+00:00",
+  "scope": "Optional curated global treatment inspiration, not story-specific canon",
+  "selection": "Name/stable ID plus exact selected file SHA-256; preserve existing snapshots.",
+  "scene_brief": "scene-brief.md",
+  "style_catalog": "style-catalog.json",
+  "gallery": "gallery.html",
+  "generation_records": "generation-records.json",
+  "comparison_sheets": [
+    "comparison-sheet.png"
+  ],
+  "assets": [
+    {
+      "id": "VIS-01",
+      "name": "Realistic Cinema",
+      "file": "images/realistic-cinema.png",
+      "description": "Natural faces, believable materials and restrained live-action light.",
+      "family": "Realistic",
+      "best_for": "Drama · mystery · grounded adventure",
+      "sha256": "c6b1abc1bb2bc99889ef9333c8ca25b9f75889c9ad2d41633c6895bdbea32339",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2492041,
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "actual_cost": null,
+      "status": "reviewed-for-global-style-selection",
+      "approved_for_story": false,
+      "rights_status": "not independently verified"
+    },
+    {
+      "id": "VIS-21",
+      "name": "Detailed Cinematic Anime",
+      "file": "images/detailed-cinematic-anime.png",
+      "description": "Fine drawn characters, layered shading and richly painted settings.",
+      "family": "Drawn",
+      "best_for": "Adventure · fantasy · emotional drama",
+      "sha256": "df142b03797e035d340c07159fc8daaccb20bda04e4fcc9a1452a221c5cc87dd",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2387713,
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "actual_cost": null,
+      "status": "reviewed-for-global-style-selection",
+      "approved_for_story": false,
+      "rights_status": "not independently verified"
+    },
+    {
+      "id": "VIS-02",
+      "name": "Cel-Shaded Anime",
+      "file": "images/cel-shaded-anime.png",
+      "description": "Clean anime contours, broad color areas and graphic cel shadows.",
+      "family": "Drawn",
+      "best_for": "Stylized action · series · clear expressions",
+      "sha256": "32a3d61e90f874f126e9dedb98556cbc780b76ae9474b4eba2570d2d34555339",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1582535,
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "actual_cost": null,
+      "status": "reviewed-for-global-style-selection",
+      "approved_for_story": false,
+      "rights_status": "not independently verified"
+    },
+    {
+      "id": "VIS-04",
+      "name": "Feature 2D Animation",
+      "file": "images/2d-cartoon.png",
+      "description": "Expressive rounded cartoon designs in a cohesive animation world.",
+      "family": "Drawn",
+      "best_for": "Family · comedy · character-led stories",
+      "sha256": "fbb720afb952d9cffb2e46658e877b55a0ddae154bdd2df68ffd08c7be8a28df",
+      "width": 1672,
+      "height": 940,
+      "bytes": 2001800,
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "actual_cost": null,
+      "status": "reviewed-for-global-style-selection",
+      "approved_for_story": false,
+      "rights_status": "not independently verified"
+    },
+    {
+      "id": "VIS-05",
+      "name": "Stylized 3D Animation",
+      "file": "images/stylized-3d.png",
+      "description": "Sculpted characters, tactile materials and soft bounced illumination.",
+      "family": "Dimensional",
+      "best_for": "Family · adventure · accessible drama",
+      "sha256": "d02581f4cca1ba569eca79bdc4851b763e46879037d3c9c3bfd2abd746ef4b96",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2354758,
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "actual_cost": null,
+      "status": "reviewed-for-global-style-selection",
+      "approved_for_story": false,
+      "rights_status": "not independently verified"
+    },
+    {
+      "id": "VIS-07",
+      "name": "Painted Storybook",
+      "file": "images/painted-storybook.png",
+      "description": "Visible gouache brushwork and simplified illustrated shapes.",
+      "family": "Painted",
+      "best_for": "Fables · gentle drama · narrated adventures",
+      "sha256": "bdf496b571df9407cc0d768088c3576516c8c6a5bf92bc86a9c6320d62bc6ebb",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2425040,
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "actual_cost": null,
+      "status": "reviewed-for-global-style-selection",
+      "approved_for_story": false,
+      "rights_status": "not independently verified"
+    },
+    {
+      "id": "VIS-22",
+      "name": "Storybook Stickman",
+      "file": "images/storybook-stickman.png",
+      "description": "Simple faces and black line arms with clothed bodies in a richly detailed storybook world.",
+      "family": "Hybrid figures",
+      "best_for": "Narrated fables · simple characters with rich settings",
+      "sha256": "d3781578d0446d52a6d6400736b2f2b3bcee5a667221e7ecb114ac0cbd0eb190",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2716496,
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "actual_cost": null,
+      "status": "reviewed-for-global-style-selection",
+      "approved_for_story": false,
+      "rights_status": "not independently verified"
+    },
+    {
+      "id": "VIS-06",
+      "name": "Cinematic Graphic Novel",
+      "file": "images/graphic-novel.png",
+      "description": "Confident ink contours, expressive adult faces and strong graphic shadow shapes.",
+      "family": "Inked",
+      "best_for": "Action · mystery · dramatic adventures",
+      "sha256": "aeb5c91f1d5eb086d2329255d881cbd57a8ba473c2bd22d3f2dcd4dce7181f28",
+      "width": 1672,
+      "height": 941,
+      "bytes": 3105318,
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "actual_cost": null,
+      "status": "reviewed-for-global-style-selection",
+      "approved_for_story": false,
+      "rights_status": "not independently verified"
+    }
+  ],
+  "supporting_files": [
+    {
+      "file": "asset-review.json",
+      "sha256": "d01a2a7d362d5e6fa83fbeb6de60cb05526d4ffbf52bb22c5dd5997ace7fcb99",
+      "bytes": 5253
+    },
+    {
+      "file": "comparison-sheet.png",
+      "sha256": "e3f202a3ecf8df06b11c0941a5f96b24e845433c01ed8afbe19c242790c2092f",
+      "bytes": 1649534,
+      "width": 1920,
+      "height": 1214
+    },
+    {
+      "file": "gallery-review.json",
+      "sha256": "ec53cac48838d56772ccaafe99b429e44b96c6ade0ec58f8fe56acb6d075e224",
+      "bytes": 6883
+    },
+    {
+      "file": "gallery.html",
+      "sha256": "19e1ec8c9bf326c43382651c673cec0079e418c3db32eaf2fcd452b0fef4e34d",
+      "bytes": 9433
+    },
+    {
+      "file": "generation/migration-map.json",
+      "sha256": "9bc55943d79ebadddf7cfd15b61c35c67d4c4f29dca9c4acce8ec8c85477b417",
+      "bytes": 14214
+    },
+    {
+      "file": "generation/prompt-plan.json",
+      "sha256": "4c65bad104f732a917dbc6391fed92f60731eddacf76ae66663eb61cb8b24932",
+      "bytes": 29795
+    },
+    {
+      "file": "generation/VIS-01.json",
+      "sha256": "de4cf33d2e4f2d33443b3b38a10bea2a1b33924deab793f12fcf550ffb5e32de",
+      "bytes": 7349
+    },
+    {
+      "file": "generation/VIS-02.json",
+      "sha256": "2bbaecd19d6e5528f26da38a13b1f60f042663060b77cfb6d229bc495e0efed0",
+      "bytes": 8405
+    },
+    {
+      "file": "generation/VIS-04.json",
+      "sha256": "ac1ae589a5ef061ee72aec38bf1e6a57a5391a54bfe37b5591e7cc6c13cf17b9",
+      "bytes": 8649
+    },
+    {
+      "file": "generation/VIS-05.json",
+      "sha256": "09a5ad6285dd19f5918656443923bdc3db23e5c3ed978afb037010babf8f8ab5",
+      "bytes": 7581
+    },
+    {
+      "file": "generation/VIS-06.json",
+      "sha256": "f9a8c38cf6354bf1800098ed31f1dc936b60dad0e05ece439f17dd5194b74f1f",
+      "bytes": 8594
+    },
+    {
+      "file": "generation/VIS-07.json",
+      "sha256": "d23a436b7fcb856be676d1b0dfaf23fa297e2303e1705f12cf8bf5be372575d3",
+      "bytes": 9497
+    },
+    {
+      "file": "generation/VIS-21.json",
+      "sha256": "a721c70c509d76674f02e700dfc78dec549162f42129e7f1a45e7dafd71fddce",
+      "bytes": 7390
+    },
+    {
+      "file": "generation/VIS-22.json",
+      "sha256": "61daf217b092139a3ab6c5315a5131d47356e2ee37d8b1995c6e804bfbe1b9dc",
+      "bytes": 9361
+    },
+    {
+      "file": "generation-records.json",
+      "sha256": "d4e8395b5942728c6a07396efa05396861066e58801c24906144ea2530992ed9",
+      "bytes": 83109
+    },
+    {
+      "file": "README.md",
+      "sha256": "0944480c80dae2865970e74e35b575568d77c1788320d67b1aa2a3cb9e8fd52e",
+      "bytes": 5707
+    },
+    {
+      "file": "scene-brief.md",
+      "sha256": "dfb2807b3159458be98fa5d88b46bd2cb9c12e59674e4b1129208a3aee15b902",
+      "bytes": 2603
+    },
+    {
+      "file": "style-catalog.json",
+      "sha256": "a3774f462c1dada401929b9fd09b2ab0307e88041ec4968bc3f13f94e71562c6",
+      "bytes": 3367
+    },
+    {
+      "file": "fidelity.json",
+      "sha256": "e4cfa980c2dab212c57d9f393370236beab0ab672e9ad706ce150f31c0927be0",
+      "bytes": 3736
+    }
+  ],
+  "fidelity_review": {
+    "reviewed_on": "2026-10-31",
+    "file": "fidelity.json",
+    "scope": "Observed traits of the exact existing eight images; no image regenerated or historical generation prompt rewritten."
+  }
+}

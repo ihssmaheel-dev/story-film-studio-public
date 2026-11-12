@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "brand": "Story Film Studio",
+  "date": "2026-10-30",
+  "purpose": "Studio logo at the top of the repository README",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "generation_calls": 1,
+  "prompt": "Use case: logo-brand.\nAsset type: finished studio logo lockup for the GitHub README of Story Film Studio.\nPrimary request: Create one outstanding, original logo for \"STORY FILM STUDIO\", a studio that turns written stories into cinematic films. It must feel like a considered professional film-studio identity, timeless, confident and beautifully simple.\nDesign: A compact, distinctive geometric emblem that unites an unfolding storybook page and a cinema screen in one coherent silhouette. Use precise folded planes and a purposeful central negative-space cut. Make it read as one memorable symbol, not a pile of separate movie icons. Pair it with an impeccably spaced wordmark. Let the craftsmanship come from shape, proportion, balance and typography.\nText (verbatim): \"STORY\" and \"FILM STUDIO\". STORY is the large primary word, FILM STUDIO is a smaller, clearly readable second line beneath it. No other text.\nComposition: A single horizontal logo, emblem to the left and the two-line wordmark to the right, together optically centered with balanced clear space. Wide, approximately 3:1 canvas, ideally 1536 by 512 pixels. The entire logo should occupy the central usable area, with sufficient but not excessive padding. Keep the emblem bold and the small lettering legible at README display size.\nStyle: Clean flat vector-like graphic design rendered as a high-resolution PNG. Ink-dark solid background, warm ivory lettering and one restrained muted-gold emblem accent; excellent contrast on the contained background so the image works in both light and dark GitHub themes. No borders.\nConstraints: Deliver only the final logo artwork. Crisp precise edges, strong silhouette, exact spelling, no thin illegible details, no photographic scene, no mockup, no metallic materials, no gradients, no lighting effects, no shadows, no 3D, no watermark, no slogan, no collage of alternatives, no existing studio trademarks.",
+  "original_output_filename": "exec-9186423d-3c9a-4ab3-8a3d-6e5947c2c1dd.png",
+  "asset": {
+    "path": "assets/branding/story-film-studio-logo.png",
+    "sha256": "a9ae09b411eaa9eb700da5f3685b0f3696ca4e59cf7af09bdeabb40527f58702",
+    "width": 2172,
+    "height": 724,
+    "format": "PNG",
+    "mode": "RGB",
+    "transparent_background": false,
+    "bytes": 1175502,
+    "original_generated_bytes_preserved": true
+  },
+  "review": {
+    "status": "visually inspected",
+    "full_size": "Open-book pages join a cinema-screen frame in a single gold emblem. STORY and FILM STUDIO are spelled correctly with clear hierarchy, balanced spacing and clear margins. The generated artwork includes subtle tonal variation.",
+    "desktop_light": "Inspected the actual browser screenshot at 760 CSS pixels: complete mark and wordmark, clear text, no clipping or overlap.",
+    "desktop_dark": "Inspected the actual browser screenshot at 760 CSS pixels: contained dark background retains contrast and legibility.",
+    "mobile_light": "Inspected the actual browser screenshot in a 390-pixel viewport, with a 342-pixel logo: complete emblem and readable wordmark; no horizontal overflow.",
+    "browser": "Chrome 156.0.8078.48 via Playwright",
+    "method": "Local README-style HTML using the exact README image markup and unchanged PNG; not a live GitHub rendering.",
+    "technical_evidence": ".runtime/checks/studio-logo-20261030/verification.json",
+    "story_approval": false
+  },
+  "reported_cost": null,
+  "model_identifier": null,
+  "seed": null,
+  "usage_rights": "No independent trademark clearance or commercial-rights assessment is claimed."
+}

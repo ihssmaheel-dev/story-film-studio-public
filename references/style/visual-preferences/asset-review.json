@@ -1,0 +1,61 @@
+{
+  "checked_at": "2026-10-29T06:34:18+00:00",
+  "assets": 8,
+  "decoded": 8,
+  "unique_scene_hashes": 8,
+  "scope": "Global style chooser only; no story-specific approval or release QA.",
+  "criteria": [
+    "Readable people, expressions and letter",
+    "Coherent chosen treatment",
+    "Calm composition and restrained color",
+    "No conspicuous artifacts or unwanted text at reviewed scale",
+    "Full figures and usable framing"
+  ],
+  "reviews": [
+    {
+      "id": "VIS-01",
+      "sha256": "c6b1abc1bb2bc99889ef9333c8ca25b9f75889c9ad2d41633c6895bdbea32339",
+      "notes": "Inspected the actual generated image: clear adult faces and eyelines, naturally held envelope, readable hands, full figures with feet inside frame, coherent station/bench perspective, balanced daylight, restrained color and no unwanted text. Photographic materials and skin remain natural rather than illustrated."
+    },
+    {
+      "id": "VIS-21",
+      "sha256": "df142b03797e035d340c07159fc8daaccb20bda04e4fcc9a1452a221c5cc87dd",
+      "notes": "Inspected actual output: precise adult anime faces and full-body silhouettes, coherent linework/cel shadows, painted station and hills, readable letter and natural seated hands, warm restrained emotion and no text. A small shoulder bag is an illustrative variation; this is not a canonical continuity sheet."
+    },
+    {
+      "id": "VIS-02",
+      "sha256": "32a3d61e90f874f126e9dedb98556cbc780b76ae9474b4eba2570d2d34555339",
+      "notes": "Selected refinement inspected: significantly flatter wall, canopy, bench, floor and hill masses; clear cel-shadow shapes and clean adult anime construction; readable letter, full figures, relaxed poses and unobstructed expressions. Distinct from the richer painted detailed-anime sample; no lettering or visible image defects identified at this review scale."
+    },
+    {
+      "id": "VIS-04",
+      "sha256": "fbb720afb952d9cffb2e46658e877b55a0ddae154bdd2df68ffd08c7be8a28df",
+      "notes": "Selected refinement visually inspected: broader rounded cartoon faces, larger expressive brows/eyes and clear adult silhouettes distinguish it from the anime treatments. Warm coherent set and lighting, natural letter interaction, readable relaxed hands and no unwanted text. Background is selectively painted rather than a flat diagram; a shoulder bag remains a noncanonical illustration variation."
+    },
+    {
+      "id": "VIS-05",
+      "sha256": "d02581f4cca1ba569eca79bdc4851b763e46879037d3c9c3bfd2abd746ef4b96",
+      "notes": "Actual image inspected: appealing stylized 3D adult faces, soft sculpted forms, matte fabric and coherent bounced illumination/contact shadows; relaxed hands and envelope remain readable, figures fit frame, set perspective is coherent and there is no unwanted text. A shoulder bag is a harmless noncanonical variation. No named franchise/studio likeness requested."
+    },
+    {
+      "id": "VIS-07",
+      "sha256": "bdf496b571df9407cc0d768088c3576516c8c6a5bf92bc86a9c6320d62bc6ebb",
+      "notes": "Selected refinement inspected: simplified illustrated adult faces and silhouettes, visible matte gouache edges across clothes/architecture/hills, broad painted color areas, calm staging and a readable envelope. More visibly illustrated than the first naturalistic painted study. Background lake and shoulder bag are illustrative variations, not canon or guaranteed identical geometry. No unwanted text or conspicuous anatomy defects identified at this review scale."
+    },
+    {
+      "id": "VIS-22",
+      "sha256": "d3781578d0446d52a6d6400736b2f2b3bcee5a667221e7ecb114ac0cbd0eb190",
+      "notes": "Inspected the actual user-supplied PNG: readable rounded faces and expressions, simple black line arms/hands, clothed filled legs and bodies, a clear envelope and detailed warmly lit station. Full figures and feet fit inside frame; no unwanted lettering or conspicuous artifacts at reviewed scale. This is the exact hybrid the user requested, not a pure all-line stick-figure construction. The prior prompt-fidelity concern remains documented in selection_history."
+    },
+    {
+      "id": "VIS-06",
+      "sha256": "aeb5c91f1d5eb086d2329255d881cbd57a8ba473c2bd22d3f2dcd4dce7181f28",
+      "notes": "Inspected actual generated output: varied ink contours and selective hatching across adult faces, clothes and architecture; strong shadow masses and restrained spot colors, clearly distinct from the anime/cartoon/painterly samples. Readable mutual eyelines, relaxed expressions, natural envelope hold and resting hands, full figures/feet inside frame, coherent receding station and bench. No unwanted text, panel borders or conspicuous anatomy defects at reviewed scale. The father's hands rest together near his knees, and a shoulder bag is an illustrative variation. Not a canonical continuity sheet or a claim of exact prompt compliance."
+    }
+  ],
+  "curation": "Eight selected examples are active, including the specifically requested Storybook Stickman and newly generated Cinematic Graphic Novel. Three earlier studies remain unselected.",
+  "limits": [
+    "Not a pixel-identical scene transformation or canonical continuity sheet.",
+    "Actual film identity, geography, resolution, crop and rights require their own review."
+  ]
+}

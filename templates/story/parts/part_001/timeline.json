@@ -1,0 +1,18 @@
+{
+  "schema_version": 2,
+  "part_id": "part_001",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "scale_filter": "lanczos",
+  "duration": null,
+  "narration_file": "audio/narration.wav",
+  "narration_start": 0,
+  "narration_gain_db": 0,
+  "audio_file": "audio/final_mix.wav",
+  "audio_manifest": "../../audio/assets.json",
+  "alignment": {"status": "draft", "uncertain_ranges": [], "manual_checks": []},
+  "shots": [],
+  "subtitles": [],
+  "audio_cues": []
+}

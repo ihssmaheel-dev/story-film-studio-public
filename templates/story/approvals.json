@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "gates": {
+    "G1": {"revision": "r1", "status": "draft"},
+    "G2": {"revision": "r1", "status": "draft"},
+    "G3": {"revision": "r1", "status": "draft"},
+    "G4": {"revision": "r1", "status": "draft"},
+    "G5": {"revision": "r1", "status": "draft"},
+    "G6": {"revision": "r1", "status": "draft"}
+  },
+  "history": []
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "python": ".venv/Scripts/python.exe",
+    "ffmpeg": ".runtime/ffmpeg/ffmpeg-9.0.2-essentials_build/bin/ffmpeg.exe",
+    "ffprobe": ".runtime/ffmpeg/ffmpeg-9.0.2-essentials_build/bin/ffprobe.exe",
+    "model": "models/kokoro/kokoro-v1.0.onnx",
+    "voices": "models/kokoro/voices-v1.0.bin"
+  },
+  "jobs": {"max_attempts": 3, "timeout_seconds": 900},
+  "render_profiles": {
+    "preview": {"preset": "ultrafast", "crf": 28, "max_dimension": 640},
+    "final": {"preset": "medium", "crf": 19, "max_dimension": null}
+  },
+  "mix": {
+    "integrated_lufs": -16,
+    "true_peak_db": -1.5,
+    "loudness_range": 11,
+    "duck_threshold": 0.03,
+    "duck_ratio": 6,
+    "duck_attack_ms": 15,
+    "duck_release_ms": 300
+  },
+  "image_provider": {
+    "mode": "codex-imagegen",
+    "automatic_paid_calls": false,
+    "execution": "The agent runs approved queued requests using the available image tool, then imports the actual result."
+  }
+}

@@ -1,0 +1,34 @@
+THE LAST DELIVERY — source credits
+
+Story: supplied by the user. Original text is preserved in creative/original.md.
+Images: generated for this film using the authorized built-in image tool.
+Selected visual direction: Storybook Stickman; film-specific character and world designs.
+Speech: synthesized locally with Resemble AI Chatterbox Nano, using the licensed
+reference excerpts below. These are synthetic performances, not recordings of
+the source readers performing this story. No endorsement by a source reader is implied.
+
+VOICE REFERENCES — LibriSpeech / OpenSLR SLR12
+Source: https://www.openslr.org/12
+License: Creative Commons Attribution 4.0 International
+License link: https://creativecommons.org/licenses/by/4.0/
+Corpus: LibriSpeech, prepared by Vassil Panayotov, Guoguo Chen, Daniel Povey
+and Sanjeev Khudanpur from LibriVox public-domain audiobook recordings.
+Narrator reference: reader Mark Nelson, speaker 251,
+LibriSpeech/dev-clean/251/136532/251-136532-0019.flac.
+Caller reference: reader Peter Eastman, speaker 174,
+LibriSpeech/dev-clean/174/50561/174-50561-0007.flac.
+Changes: short excerpts decoded to WAV and used as local synthesis references;
+new dialogue synthesized; caller filtered for a quiet telephone perspective.
+Source transcripts and provenance: audio/voice-references/source-records.json.
+
+WOOD FOOTSTEPS — mikeask, "steps in wood floor"
+Source: https://opengameart.org/content/steps-in-wood-floor
+License: CC0 https://creativecommons.org/publicdomain/zero/1.0/
+Changes: high-pass 80 Hz, low-pass 2200 Hz and subtle short echo, then mixed
+under the final black frame. Original and processed file hashes are retained.
+
+Air, room tone, telephone signals and CRT noise: limited procedural signals
+authored in production/prepare_sound.py. No music recording is used.
+
+Runtime/model provenance and exact revisions: production/chatterbox-runtime.json.
+Source assets, licenses, transformations and file hashes: audio/assets.json.
