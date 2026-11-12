@@ -19,7 +19,7 @@
 
 ---
 
-Story Film Studio is an **image-led storytelling workspace**. It turns a written story into a film built around a sequence of cinematic still images, supported by narration, dialogue, sound and captions. Each image is planned for a moment in the story, with character and location references to help the film feel consistent.
+Story Film Studio is an **AI-assisted story-to-video studio** for creating image-led films from written stories. It combines cinematic still images, narration, character dialogue, sound and captions into a finished video. Each image is planned for a moment in the story, with character and location references to help the film feel consistent.
 
 **You bring the story; the agent handles the production work.** Paste your story, answer the important questions, and follow along as the agent develops the cast, creates images and assembles a preview. Want to change something? Say it in chat: refine a character, choose another voice, adjust a shot or change the pacing. Then watch the updated preview and decide when it is ready.
 
@@ -192,6 +192,28 @@ The requested delivery can include the final MP4, narration and mix audio, subti
 ## About this repository
 
 Story Film Studio was developed and tested in a private workspace before this public release. This repository starts with a clean public snapshot, so its initial commit does not represent the full development and testing history. The Last Delivery is included as a sample project; private stories and credentials are kept separate.
+
+## Frequently asked questions
+
+### Can I turn a written story into a video with AI?
+
+Yes. Give the assistant your complete story and your preferences. The studio guides the agent through story planning, character references, AI-generated still images, voice, sound, subtitles and video assembly. You review the complete preview before final delivery.
+
+### Is this an AI video generator or an image-led film maker?
+
+It is an image-led film making workflow: the finished video is assembled from still images and audio, with optional gentle camera movement. It does not automatically generate animated character performances or continuous AI video clips.
+
+### Can I make a story video with Codex or Antigravity?
+
+You can work through the studio with an assistant that can follow the repository instructions and access the necessary tools. The included image-generation bridge targets Codex; an Antigravity workflow depends on its available image tools and a compatible import process. See [image generation and visual consistency](#image-generation-and-visual-consistency).
+
+### Can I use local voices or my own narration?
+
+Yes. Supported speech routes include local Kokoro and Chatterbox as well as cloud providers, compatible gateways and imported recordings. Each route has its own setup, language support and privacy requirements. See [speech providers](docs/14-speech-providers.md).
+
+### Does it make short films and longer stories?
+
+The studio supports a single film, multiple parts, a storyboard or story-only work. The agent plans the number of images around the story rather than a fixed per-minute quota. Actual running time and production time depend on the story, chosen voices, tools and hardware.
 
 ## Learn more
 
