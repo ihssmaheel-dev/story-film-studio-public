@@ -223,6 +223,12 @@ Yes. Supported speech routes include local Kokoro and Chatterbox as well as clou
 
 The studio supports a single film, multiple parts, a storyboard or story-only work. The agent plans the number of images around the story rather than a fixed per-minute quota. Actual running time and production time depend on the story, chosen voices, tools and hardware.
 
+## Contributing and license
+
+Found a bug or have an idea? Issues and pull requests are welcome. See the [contribution guide](CONTRIBUTING.md) for setup, checks, privacy and asset guidance.
+
+The studio software is available under the [MIT License](LICENSE). **The Last Delivery**, visual references, branding, models and other third-party materials are not automatically covered by the software license; consult their own credits and terms before reuse. See [The Last Delivery credits](stories/the-last-delivery/CREDITS.txt) and [Kokoro licensing](models/kokoro/README.md).
+
 ## Learn more
 
 - [Start-here prompt](START_HERE.md) · [Fast workflow](docs/13-fast-workflow.md) · [Story-to-film journey](docs/11-story-to-film-journey.md)
