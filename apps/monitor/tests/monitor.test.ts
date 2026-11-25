@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { duration, timecode } from "../src/lib/format";
 import {
   filterEvents,
+  isProjectDelivered,
   operationPercent,
   orderedJobs,
   taskDuration,
@@ -82,14 +83,31 @@ describe("actual clocks and chronology", () => {
     const jobs = [
       "render:part_001:final",
       "run:preview",
+      "provider:image-jobs:1",
       "render:part_001:preview",
       "narration:part_001",
+      "preflight:part_001",
     ].map((id) => ({ id, label: id }) as Job);
     expect(orderedJobs(jobs).map((job) => job.id)).toEqual([
+      "preflight:part_001",
       "narration:part_001",
+      "provider:image-jobs:1",
       "render:part_001:preview",
       "render:part_001:final",
     ]);
+  });
+  it("requires every part to be delivered before marking a multipart project delivered", () => {
+    const base = {
+      current: { state: "idle", label: "", message: "", eta: { available: false } },
+      assets: { images: 2, shots: 2, reviewed_images: 2, clips: 0, planned_clips: null, provider_requests: 0, deliveries: 1 },
+      media: [
+        { part: "part_001", master_current: true, preview: { approved: true }, delivered: true },
+        { part: "part_002", master_current: true, preview: { approved: true }, delivered: false },
+      ],
+    } as unknown as MonitorSnapshot;
+    expect(isProjectDelivered(base)).toBe(false);
+    base.media[1].delivered = true;
+    expect(isProjectDelivered(base)).toBe(true);
   });
 });
 

@@ -99,7 +99,7 @@ def build(project, part_id):
     if not result or cursor != len(aligned):
         raise ValueError('Written shots must cover the complete aligned narration, without omitted words')
     result[-1]['end'] = duration
-    if approved.get('audio_cues'):
+    if 'audio_cues' in approved:
         previous['audio_cues'] = approved['audio_cues']
     by_id = {shot['id']: shot for shot in result}
     for cue in previous.get('audio_cues', []):

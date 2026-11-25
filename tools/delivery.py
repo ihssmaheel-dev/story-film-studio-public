@@ -6,7 +6,7 @@ import shutil
 
 from project_records import artifact_path, validate_continuity
 from quality import check_part, image_review_context
-from studio_common import atomic_json, atomic_text, fingerprint, read_json, sha256_file, utc_now
+from studio_common import atomic_json, atomic_text, fingerprint, portable_path, read_json, resolve_portable_path, sha256_file, utc_now
 
 
 def release_inputs(project, part_id):
@@ -19,9 +19,11 @@ def release_inputs(project, part_id):
         raise ValueError('The master render belongs to an older timeline')
     if render_log.get('audio_sha256') != sha256_file(part / data['audio_file']):
         raise ValueError('The master render belongs to a different audio mix')
+    image_hashes = render_log.get('source_image_hashes', {})
     for shot in data['shots']:
         source = (part / shot['image']).resolve()
-        if render_log.get('source_image_hashes', {}).get(str(source)) != sha256_file(source):
+        recorded_image = image_hashes.get(portable_path(source, part), image_hashes.get(str(source)))
+        if recorded_image != sha256_file(source):
             raise ValueError('The master render belongs to different source images')
     if render_log.get('subtitles_sha256') and render_log['subtitles_sha256'] != sha256_file(part / 'subtitles.srt'):
         raise ValueError('The master render contains older burned subtitles')
@@ -29,7 +31,12 @@ def release_inputs(project, part_id):
     if mix_log.get('output_sha256') != sha256_file(part / data['audio_file']):
         raise ValueError('Final mix bytes differ from its mix log')
     for name, digest in mix_log.get('source_input_hashes', {}).items():
-        if sha256_file(name) != digest:
+        resolved = resolve_portable_path(name, project)
+        if not resolved.is_file() and not Path(name).is_absolute():
+            part_candidate = (part / name).resolve()
+            if part_candidate.is_file():
+                resolved = part_candidate
+        if sha256_file(resolved) != digest:
             raise ValueError('The mix contains older narration or sound assets')
     if data.get('audio_cues') and mix_log.get('audio_manifest_sha256') != sha256_file((part / data['audio_manifest']).resolve()):
         raise ValueError('The mix predates the current audio asset registry')
@@ -66,9 +73,9 @@ def release_inputs(project, part_id):
         paths.append(manifest)
         assets = read_json(manifest)['assets']
         paths.extend(manifest.parent / assets[cue['asset_id']]['file'] for cue in data['audio_cues'])
-        listening = project / 'production/preview-listening.json'
-        if listening.is_file():
-            paths.append(listening)
+    listening = project / 'production/preview-listening.json'
+    if listening.is_file():
+        paths.append(listening)
     if read_json(project / 'creative/intake.json').get('subtitles') is not False:
         paths.append(part / 'subtitles.srt')
     for group in read_json(project / 'continuity/entities.json').values():
@@ -166,7 +173,7 @@ def export_part(project, part_id, revision):
               project / 'production/settings.json', project / 'production/authorizations.json',
               project / 'production/workflow.json', project / 'production/delegation.json',
               project / 'production/git.json',
-              project / 'production/preview-decisions.json',
+              project / 'production/preview-decisions.json', project / 'production/preview-listening.json',
               project / 'continuity/story-ledger.json', project / 'continuity/dependencies.json']
     extras += list((project / 'creative').glob('*.md'))
     extras += list((project / 'audio/voice-revisions').glob('*.json'))

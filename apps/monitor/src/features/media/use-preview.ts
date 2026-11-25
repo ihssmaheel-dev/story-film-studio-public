@@ -16,7 +16,10 @@ export function usePreview(latest: FilmPart) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!loaded && latest.preview.exists) setLoaded(latest);
+    if (!latest.preview.exists) return;
+    if (!loaded || (loaded !== latest && loaded.preview.url === latest.preview.url)) {
+      setLoaded(latest);
+    }
   }, [latest, loaded]);
 
   function loadLatest() {

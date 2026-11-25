@@ -10,7 +10,7 @@ import copy
 from pathlib import Path
 import re
 
-from studio_common import ROOT, atomic_json, fingerprint, hash_session, read_json, sha256_file, utc_now
+from studio_common import ROOT, atomic_json, fingerprint, hash_session, portable_path, read_json, sha256_file, utc_now
 
 AUDIT_AREAS = (
     'plot', 'scene_continuity', 'characters', 'chronology', 'cause_effect', 'knowledge',
@@ -192,6 +192,9 @@ def configuration_problems(project):
             errors.append('Use positive even frame dimensions and a finite positive FPS')
     elif frame not in ('landscape', 'portrait', 'square'):
         errors.append('Choose landscape, portrait, square or explicit frame dimensions')
+    subtitles = intake.get('subtitles')
+    if subtitles is not None and subtitles not in (True, False, 'burn-in'):
+        errors.append('Subtitles must be true, false, "burn-in", or unanswered')
     return list(dict.fromkeys(errors))
 
 
@@ -543,8 +546,10 @@ def image_problems(project, parts):
         written = {shot['id']: shot for shot in read_json(part / 'shots.json')['shots']}
         for shot in data['shots']:
             review = reviews.get(part.name + '/' + shot['id'], {})
-            if (shot['id'] not in written or review.get('verdict') != 'passed'
-                    or review.get('sha256') != sha256_file(part / shot['image'])
+            image_path = part / shot['image']
+            if (shot['id'] not in written or not image_path.is_file()
+                    or review.get('verdict') != 'passed'
+                    or review.get('sha256') != sha256_file(image_path)
                     or review.get('context') != image_review_context(project, part.name, written[shot['id']])):
                 errors.append(f'{part.name}/{shot["id"]}: current image/reference inspection is required')
     return errors
@@ -598,9 +603,11 @@ def preview_inputs(project, part_id):
     files = [part / 'preview.mp4', part / timeline['audio_file']]
     if log.get('output_sha256') != sha256_file(files[0]) or log.get('audio_sha256') != sha256_file(files[1]):
         raise ValueError(f'{part_id}: preview bytes or audio changed since rendering')
+    image_hashes = log.get('source_image_hashes', {})
     for shot in timeline['shots']:
         path = (part / shot['image']).resolve()
-        if log.get('source_image_hashes', {}).get(str(path)) != sha256_file(path):
+        recorded_hash = image_hashes.get(portable_path(path, part), image_hashes.get(str(path)))
+        if recorded_hash != sha256_file(path):
             raise ValueError(f'{part_id}: preview images changed since rendering')
         files.append(path)
     if read_json(project / 'creative/intake.json').get('subtitles') is not False:
@@ -666,7 +673,7 @@ def validate_preferences(data):
             raise ValueError(f'Unsupported {section} preference')
     if 'workflow' in data:
         validate_policy(data['workflow'])
-    if not isinstance(data.get('settings', {}), dict) or set(data.get('settings', {})) - {'render_profiles', 'mix', 'image_provider', 'jobs'}:
+    if not isinstance(data.get('settings', {}), dict) or set(data.get('settings', {})) - {'schema_version', 'render_profiles', 'mix', 'image_provider', 'jobs'}:
         raise ValueError('Presets configure render, mix, image provider and job settings only')
     reference_sources(data.get('style_references', []))
     voice_reference_sources(data.get('voice_references', []))
@@ -849,7 +856,7 @@ def main():
             if args.file and args.preset:
                 raise ValueError('Choose a configuration file or a saved preset')
             data = read_json(args.file) if args.file else load_preset(args.preset) if args.preset else {}
-            if set(data) - {'schema_version', 'workflow', 'intake', 'narrator', 'settings', 'style_references'}:
+            if set(data) - {'schema_version', 'workflow', 'intake', 'narrator', 'settings', 'style_references', 'voice_references'}:
                 raise ValueError('Configuration accepts preferences, not authorization or review records')
             value = copy.deepcopy(data.get('workflow', policy(args.project)))
             if args.mode:

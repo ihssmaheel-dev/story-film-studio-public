@@ -24,7 +24,7 @@ def target(project, name):
     if path.is_absolute() or '..' in path.parts or str(path) != name:
         raise ValueError('Canonical paths must stay inside this project')
     allowed = (name in EXACT or re.fullmatch(r'world/(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_-]+\.md', name)
-               or re.fullmatch(r'parts/part_[0-9]{3}/(?:part\.json|shots\.json|speech\.json|timeline\.json|narration\.txt|storyboard\.md)', name))
+               or re.fullmatch(r'parts/part_\d{3,}/(?:part\.json|shots\.json|speech\.json|timeline\.json|narration\.txt|storyboard\.md)', name))
     if not allowed:
         raise ValueError('Not an authored plan artifact: ' + name + '; use the dedicated source/configuration/voice/review command')
     result = (project / name).resolve()

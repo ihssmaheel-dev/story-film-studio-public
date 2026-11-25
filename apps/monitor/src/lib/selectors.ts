@@ -46,11 +46,17 @@ export function taskDuration(events: ProductionEvent[]) {
 }
 
 const stageOrder = [
+  "preflight",
+  "story",
+  "world",
+  "cast",
+  "shots",
   "voice_setup",
   "audition",
   "narration",
   "alignment",
   "timeline",
+  "provider",
   "images",
   "sound",
   "mix",
@@ -80,4 +86,18 @@ export function operationPercent(snapshot: MonitorSnapshot): number | null {
   return typeof percent === "number" && Number.isFinite(percent)
     ? Math.min(100, Math.max(0, percent))
     : null;
+}
+
+export function isProjectDelivered(snapshot: MonitorSnapshot): boolean {
+  return (
+    snapshot.current.state === "idle" &&
+    snapshot.assets.deliveries > 0 &&
+    snapshot.media.length > 0 &&
+    snapshot.media.every(
+      (part) =>
+        part.master_current &&
+        part.preview.approved &&
+        part.delivered !== false,
+    )
+  );
 }

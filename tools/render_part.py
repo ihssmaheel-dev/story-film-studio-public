@@ -11,7 +11,7 @@ from pathlib import Path
 from mix_audio import probe_duration
 from camera_motion import active_motion, camera_filter, normalize_motion
 from validate_timeline import validate
-from studio_common import atomic_json, configuration, executable, find_project, fingerprint, process, read_json, require_production, sha256_file
+from studio_common import atomic_json, configuration, executable, find_project, fingerprint, portable_path, process, read_json, require_production, sha256_file
 from workflow import presentation
 
 
@@ -122,7 +122,7 @@ def main():
     if scale_filter not in ('lanczos', 'neighbor', 'bicubic'):
         parser.error('scale_filter must be lanczos, neighbor or bicubic')
     moving = any(active_motion(shot) for shot in data['shots'])
-    image_hashes = {str((timeline.parent / shot['image']).resolve()): sha256_file(timeline.parent / shot['image'])
+    image_hashes = {portable_path(timeline.parent / shot['image'], timeline.parent): sha256_file(timeline.parent / shot['image'])
                     for shot in data['shots']}
     picture_key = fingerprint({'images': image_hashes, 'duration': data['duration'], 'width': width, 'height': height,
         'fps': fps, 'scale_filter': scale_filter, 'preset': preset, 'crf': crf,
@@ -225,7 +225,7 @@ def main():
             'video_filter': video_filter, 'working_dimensions': [working_width, working_height],
             'camera_motion': {shot['id']: normalize_motion(shot.get('motion')) for shot in data['shots']},
             'output_sha256': sha256_file(output), 'profile': args.profile,
-            'source_image_hashes': {str(source): sha256_file(source) for source in prepared},
+            'source_image_hashes': {portable_path(source, timeline.parent): sha256_file(source) for source in prepared},
             'audio_sha256': sha256_file(audio),
             'subtitles_sha256': sha256_file(args.srt) if args.srt else None,
             'width': width, 'height': height, 'fps': fps, 'stream_metadata': stream_metadata,

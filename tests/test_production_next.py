@@ -303,6 +303,98 @@ class NextWorkTests(unittest.TestCase):
         (self.part / 'images/shot_001.png').unlink()
         self.assertEqual(next_work(self.project)['actions'][0]['kind'], 'image_cost_scope')
 
+    def test_visible_cast_non_recurring_character_also_checks_image_cost_scope(self):
+        self.authorize(); self.ready()
+        from cast_fixtures import install_profile
+        install_profile(self.project, 'CHAR-001')
+        written = read_json(self.part / 'shots.json')
+        written['shots'][0]['character_ids'] = ['CHAR-001']
+        atomic_json(self.part / 'shots.json', written)
+        timeline = read_json(self.part / 'timeline.json')
+        timeline['shots'][0]['character_ids'] = ['CHAR-001']
+        atomic_json(self.part / 'timeline.json', timeline)
+        self.assertEqual(next_work(self.project)['actions'][0]['kind'], 'image_cost_scope')
+
+    def test_four_digit_part_ids_are_accepted(self):
+        from production_plan import target as plan_target
+        self.assertEqual(plan_target(self.project, 'parts/part_1000/shots.json'),
+                         (self.project / 'parts/part_1000/shots.json').resolve())
+        target = self.project / 'parts/part_1000'
+        shutil.copytree(self.part, target)
+        for name in ('part.json', 'shots.json', 'timeline.json'):
+            data = read_json(target / name); data['part_id'] = 'part_1000'; atomic_json(target / name, data)
+        intake = read_json(self.project / 'creative/intake.json')
+        intake.update(mode='parts', desired_part_count=2, continuous_edition=False)
+        atomic_json(self.project / 'creative/intake.json', intake)
+        atomic_json(self.project / 'creative/part-plan.json', {'schema_version': 1})
+        self.authorize()
+        with patch('production_next.part_problems', return_value=[]), \
+             patch('production_next.handoff', return_value={'part': 'part_1000'}):
+            packet = next_work(self.project, 'part_1000')
+        self.assertEqual(packet['part'], 'part_1000')
+
+    @unittest.skipUnless(executable('ffmpeg'), 'Actual FFmpeg required')
+    def test_continuous_edition_transitions_to_complete_when_full_film_delivered(self):
+        from delivery import record_playback
+        from quality import record_image_review
+        from workflow import record_preview
+        atomic_text(self.project / 'creative/original.md', 'Line one.\nLine two.\n')
+        story_hash = sha256_file(self.project / 'creative/original.md')
+        source = read_json(self.project / 'creative/source.json')
+        source['sha256'] = story_hash
+        atomic_json(self.project / 'creative/source.json', source)
+        for rel in ('continuity/story-ledger.json', 'creative/audit-issues.json'):
+            doc = read_json(self.project / rel)
+            doc['source_sha256'] = story_hash
+            if 'final_story_sha256' in doc:
+                doc['final_story_sha256'] = story_hash
+            if 'review_coverage' in doc:
+                doc['review_coverage']['checked_story_sha256'] = story_hash
+            atomic_json(self.project / rel, doc)
+        shutil.copytree(self.part, self.project / 'parts/part_002', dirs_exist_ok=True)
+        for name in ('part.json', 'shots.json', 'timeline.json'):
+            data = read_json(self.project / 'parts/part_002' / name); data['part_id'] = 'part_002'
+            atomic_json(self.project / 'parts/part_002' / name, data)
+        intake = read_json(self.project / 'creative/intake.json')
+        intake.update(mode='parts', desired_part_count=2, continuous_edition=True)
+        atomic_json(self.project / 'creative/intake.json', intake)
+        atomic_json(self.project / 'creative/part-plan.json', {
+            'schema_version': 1, 'story_file': 'creative/original.md',
+            'story_sha256': story_hash,
+            'parts': [
+                {'id': 'part_001', 'title': 'One', 'start_line': 1, 'end_line': 1,
+                 'opening_hook': 'Hook 1', 'dramatic_progress': 'Progress 1', 'ending': 'End 1',
+                 'entry_state': {}, 'exit_state': {},
+                 'continuation': {'id': 'PROMISE-1', 'next_part': 'part_002', 'promise': 'Next', 'payoff': 'Payoff'}},
+                {'id': 'part_002', 'title': 'Two', 'start_line': 2, 'end_line': 2,
+                 'opening_hook': 'Hook 2', 'dramatic_progress': 'Progress 2', 'ending': 'End 2',
+                 'entry_state': {}, 'exit_state': {}, 'pays_off': ['PROMISE-1'], 'continuation': None},
+            ],
+        })
+        self.authorize()
+        for pid in ('part_001', 'part_002'):
+            continue_project(self.project, pid)
+            record_image_review(self.project, pid, 'SHOT-001', 'passed', 'Synthetic fixture.', 'unit test')
+            record_preview(self.project, pid, 'SYNTHETIC preview', 'unit test')
+            continue_project(self.project, pid)
+            record_playback(self.project, pid, 'unit test', 'SYNTHETIC playback', True)
+            continue_project(self.project, pid)
+        self.assertEqual(next_work(self.project)['actions'][0]['kind'], 'continuous_edition')
+
+        full_video = self.project / 'full-film/final.mp4'
+        full_video.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(self.part / 'final.mp4', full_video)
+        atomic_json(self.project / 'delivery/full-film-r1/manifest.json', {
+            'part_id': 'full-film', 'revision': 'r1', 'release_ready': True,
+            'playback_review': {'status': 'passed'},
+            'files': {'full-film/final.mp4': sha256_file(full_video)},
+        })
+        packet = next_work(self.project)
+        self.assertEqual(packet['actions'][0]['kind'], 'complete')
+        self.assertIn('full-film-r1', packet['actions'][0]['full_film_delivery'])
+        full_video.write_bytes(b'changed full cut bytes')
+        self.assertEqual(next_work(self.project)['actions'][0]['kind'], 'continuous_edition')
+
 
 class CachedReadinessTests(unittest.TestCase):
     setUp = fixtures.FastFixture.setUp

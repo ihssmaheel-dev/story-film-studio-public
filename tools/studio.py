@@ -165,8 +165,9 @@ def run_project(project, part_selection='all', profile='preview', stages=None, f
                 inputs.append(narration_path)
             inputs.extend(registry_path.parent / asset['file'] for asset in used.values())
             mix = part / timeline['audio_file']
-            store.run('mix:' + part.name, inputs, {'profile': 'final', 'assets': asset_inputs(used),
-                      'plan': mix_plan(timeline), 'settings': configuration(project)['mix']},
+            store.run('mix:' + part.name, inputs, {'profile': 'final', 'draft_preview': draft_preview,
+                      'assets': asset_inputs(used), 'plan': mix_plan(timeline),
+                      'settings': configuration(project)['mix']},
                       [mix, mix.with_suffix('.mix-log.json')],
                       lambda: invoke('mix_audio.py', timeline_path, '--profile', 'final',
                                      *(['--draft-preview'] if draft_preview else [])), force=force,

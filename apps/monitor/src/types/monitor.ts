@@ -26,6 +26,7 @@ export interface Project {
   workspace: string;
   path: string;
   state?: JobState;
+  updated_at?: string | null;
   active?: string;
   attention_count?: number;
 }
@@ -41,10 +42,13 @@ export interface Job {
   heartbeat_age_seconds?: number | null;
   progress_age_seconds?: number | null;
   elapsed_seconds?: number | null;
+  run_id?: string | null;
   completed?: number | null;
   total?: number | null;
   unit?: string;
   percent?: number | null;
+  attempt?: number | null;
+  origin?: string;
   eta: Estimate;
   instrumented?: boolean;
 }
@@ -115,6 +119,7 @@ export interface FilmPart {
   };
   master_exists: boolean;
   master_current: boolean;
+  delivered?: boolean;
 }
 export interface MonitorSnapshot {
   cast?: CastWorkspace;
@@ -161,8 +166,10 @@ export interface MonitorSnapshot {
     provider_requests: number;
     deliveries: number;
   };
+  story_review_recorded?: boolean;
   warnings: string[];
   read_only: boolean;
+  eta_note?: string;
 }
 export type Section = "overview" | "progress" | "timeline" | "voices" | "cast";
 

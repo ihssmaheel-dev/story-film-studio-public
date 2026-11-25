@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { StatusBadge } from "@/components/status-badge";
 import { duration, relative, timestamp } from "@/lib/format";
-import { operationPercent } from "@/lib/selectors";
+import { isProjectDelivered, operationPercent } from "@/lib/selectors";
 import type { MonitorSnapshot, Section } from "@/types/monitor";
 
 export function CurrentOperation({
@@ -26,13 +26,7 @@ export function CurrentOperation({
   const { current, assets, steps } = snapshot;
   const percent = operationPercent(snapshot);
   const eta = current.eta;
-  const delivered =
-    current.state === "idle" &&
-    assets.deliveries > 0 &&
-    snapshot.media.length > 0 &&
-    snapshot.media.every(
-      (part) => part.master_current && part.preview.approved,
-    );
+  const delivered = isProjectDelivered(snapshot);
   const Icon = delivered ? CircleCheck : Activity;
   return (
     <>

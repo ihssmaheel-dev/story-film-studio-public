@@ -78,6 +78,31 @@ def fingerprint(data):
     return hashlib.sha256(json.dumps(data, sort_keys=True, ensure_ascii=False, allow_nan=False).encode('utf-8')).hexdigest()
 
 
+def portable_path(path, base=None):
+    """Return a checkout-portable key relative to base or studio ROOT when inside them."""
+    resolved = Path(path).resolve()
+    if base is not None:
+        root = Path(base).resolve()
+        if resolved.is_relative_to(root):
+            return resolved.relative_to(root).as_posix()
+    if resolved.is_relative_to(ROOT):
+        return '@studio/' + resolved.relative_to(ROOT).as_posix()
+    return str(resolved)
+
+
+def resolve_portable_path(name, base=None):
+    """Resolve a portable key (relative, @studio/, or legacy absolute) back to a Path."""
+    text = str(name)
+    if text.startswith('@studio/'):
+        return (ROOT / text.removeprefix('@studio/')).resolve()
+    candidate = Path(text)
+    if candidate.is_absolute():
+        return candidate
+    if base is not None:
+        return (Path(base).resolve() / candidate).resolve()
+    return candidate.resolve()
+
+
 def configuration(project=None):
     config = read_json(ROOT / 'studio.json')
     if project:
@@ -207,6 +232,10 @@ class JobStore:
             state.setdefault('jobs', {})[identity] = record
             atomic_json(self.path, state)
 
+    def _normalized_hashes(self, mapping):
+        return {portable_path(resolve_portable_path(key, self.project), self.project): value
+                for key, value in (mapping or {}).items()}
+
     def reuse(self, identity, inputs, outputs, matches):
         """Reuse a verified complete job before starting an optional heavy runtime.
 
@@ -217,9 +246,10 @@ class JobStore:
         parameters = old.get('parameters')
         if old.get('status') != 'complete' or parameters is None or not matches(parameters):
             return None
-        if old.get('inputs') != {str(Path(path).resolve()): sha256_file(path, self.hash_memo) for path in inputs}:
+        if self._normalized_hashes(old.get('inputs')) != {portable_path(path, self.project): sha256_file(path, self.hash_memo) for path in inputs}:
             return None
-        if not all(Path(path).is_file() and old.get('outputs', {}).get(str(Path(path).resolve())) == sha256_file(path)
+        old_outputs = self._normalized_hashes(old.get('outputs'))
+        if not all(Path(path).is_file() and old_outputs.get(portable_path(path, self.project)) == sha256_file(path)
                    for path in outputs):
             return None
         self._timing(identity, 0.0, True)
@@ -232,16 +262,17 @@ class JobStore:
         max_attempts = max_attempts or configuration(self.project)['jobs']['max_attempts']
         if not 1 <= max_attempts <= 10:
             raise ValueError('Local job attempts must be between 1 and 10')
-        source_hashes = {str(Path(path).resolve()): sha256_file(path, self.hash_memo) for path in inputs}
+        source_hashes = {portable_path(path, self.project): sha256_file(path, self.hash_memo) for path in inputs}
         signature = fingerprint({'inputs': source_hashes, 'parameters': parameters})
         state = read_json(self.path, {'jobs': {}})
         old = state.get('jobs', {}).get(identity, {})
         outputs = [Path(path).resolve() for path in outputs]
+        old_outputs = self._normalized_hashes(old.get('outputs'))
         if not force and old.get('fingerprint') == signature and old.get('status') == 'complete':
-            if all(path.is_file() and old.get('outputs', {}).get(str(path)) == sha256_file(path) for path in outputs):
+            if all(path.is_file() and old_outputs.get(portable_path(path, self.project)) == sha256_file(path) for path in outputs):
                 if refresh_cached:
                     refresh_cached()
-                    old['outputs'] = {str(path): sha256_file(path) for path in outputs}
+                    old['outputs'] = {portable_path(path, self.project): sha256_file(path) for path in outputs}
                     old['metadata_checked_at'] = utc_now()
                     self.update(identity, old)
                 self._timing(identity, 0.0, True)
@@ -263,7 +294,7 @@ class JobStore:
                     if missing:
                         raise ValueError(f'Job completed without declared outputs: {missing}')
                 record.update(status='complete', finished_at=utc_now(),
-                              outputs={str(path): sha256_file(path) for path in outputs})
+                              outputs={portable_path(path, self.project): sha256_file(path) for path in outputs})
                 self.update(identity, record)
                 self._timing(identity, time.monotonic() - started, False)
                 return {'cached': False, 'outputs': record['outputs']}

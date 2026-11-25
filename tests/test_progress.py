@@ -472,6 +472,39 @@ class ProgressTests(unittest.TestCase):
             urlopen(url)
         self.assertEqual(caught.exception.code, 409)
 
+    def test_multipart_delivery_marks_delivered_per_part(self):
+        self.media_fixture()
+        part2 = self.project / 'parts/part_002'
+        shutil.copytree(self.part, part2)
+        for p in (self.part, part2):
+            atomic_text(p / 'final.mp4', 'synthetic master ' + p.name)
+            log = read_json(p / 'preview.render-log.json')
+            log['source_image_hashes'] = {'images/shot.png': sha256_file(p / 'images/shot.png')}
+            atomic_json(p / 'preview.render-log.json', log)
+            log['output_sha256'] = sha256_file(p / 'final.mp4')
+            atomic_json(p / 'final.render-log.json', log)
+            mix_log = read_json(p / 'audio/final_mix.mix-log.json')
+            mix_log['source_input_hashes'] = {f'parts/{p.name}/audio/narration.wav': sha256_file(p / 'audio/narration.wav')}
+            atomic_json(p / 'audio/final_mix.mix-log.json', mix_log)
+            atomic_json(self.project / 'production/preview-decisions.json', {
+                'decisions': {
+                    **read_json(self.project / 'production/preview-decisions.json', {}).get('decisions', {}),
+                    p.name: {
+                        'status': 'accepted', 'decision_quote': 'SYNTHETIC', 'decision_reference': 'test',
+                        'inputs': preview_inputs(self.project, p.name),
+                    },
+                },
+            })
+        atomic_json(self.project / 'delivery/part_001-r1/manifest.json', {
+            'part_id': 'part_001', 'revision': 'r1', 'release_ready': True, 'exported_at': '2026-11-01T00:00:00Z',
+            'files': {'parts/part_001/final.mp4': sha256_file(self.part / 'final.mp4')},
+        })
+        snap = self.snapshot()
+        by_part = {item['part']: item for item in snap['media']}
+        self.assertTrue(by_part['part_001']['delivered'])
+        self.assertFalse(by_part['part_002']['delivered'])
+        self.assertNotEqual(snap['current']['label'], 'Delivery is available')
+
 
 if __name__ == '__main__':
     unittest.main()

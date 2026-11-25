@@ -318,7 +318,10 @@ class SpeechSession:
                             raw_source.write_bytes(payload)
                         cached.parent.mkdir(parents=True, exist_ok=True)
                         partial = cached.with_suffix('.partial.wav')
-                        process([executable('ffmpeg'), '-v', 'error', '-y', '-i', str(raw_source), '-ar', str(rate), '-ac', '1', '-c:a', 'pcm_s16le', str(partial)])
+                        ffmpeg = executable('ffmpeg')
+                        if not ffmpeg:
+                            raise ValueError('FFmpeg is required for speech normalization')
+                        process([ffmpeg, '-v', 'error', '-y', '-i', str(raw_source), '-ar', str(rate), '-ac', '1', '-c:a', 'pcm_s16le', str(partial)])
                         with sf.SoundFile(partial) as source:
                             if source.frames <= 0:
                                 raise ValueError('Speech provider returned empty audio')

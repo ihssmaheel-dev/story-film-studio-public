@@ -506,6 +506,14 @@ export function CastWorkspace({
                       ))}
                     </ul>
                   </section>
+                  {profile.reference_notes && (
+                    <section className="cast-detail-section">
+                      <h3>Reference notes</h3>
+                      <p className="text-sm leading-6">
+                        {profile.reference_notes}
+                      </p>
+                    </section>
+                  )}
                   <Requirements
                     title="Required identity views"
                     entries={Object.fromEntries(

@@ -360,8 +360,13 @@ class Monitor:
                 master_name = f'parts/{part_id}/final.mp4'
                 matches = bool(record.get('files', {}).get(master_name)) and record['files'][master_name] == self.reader.digest(project / master_name)
                 deliveries.append({'revision': public_text(record.get('revision')), 'part': public_text(part_id), 'current_master': matches, 'at': record.get('exported_at')})
-        delivered = bool(media and all(item['preview']['approved'] and item['master_current'] and any(
-            delivery['current_master'] and delivery['part'] == item['part'] for delivery in deliveries) for item in media))
+        delivered = bool(media)
+        for item in media:
+            item_delivered = bool(
+                item['preview']['approved'] and item['master_current'] and any(
+                    delivery['current_master'] and delivery['part'] == item['part'] for delivery in deliveries))
+            item['delivered'] = item_delivered
+            delivered = delivered and item_delivered
         if not selected and not attention and delivered:
             current.update(label='Delivery is available', state='idle', message='The current master has a recorded delivery package. Preview approval and voice revisions are shown below.')
         finished_at = max((item['at'] for item in deliveries if item['current_master'] and timestamp(item['at']) is not None),

@@ -3,7 +3,7 @@ from pathlib import Path
 from urllib.parse import urlencode
 
 from speech_providers import voice_config
-from studio_common import fingerprint
+from studio_common import fingerprint, portable_path, resolve_portable_path
 from workflow import presentation
 
 
@@ -88,7 +88,11 @@ def part_view(reader, info, part, timeline, chunks):
             if (narration or timeline.get('audio_cues')) and not mix_log.get('source_input_hashes'):
                 reasons.append('The current sound sources need a mix record')
             for name, recorded in mix_log.get('source_input_hashes', {}).items():
-                path = Path(name).resolve()
+                path = resolve_portable_path(name, project)
+                if not path.is_file() and not Path(name).is_absolute():
+                    part_candidate = (part / name).resolve()
+                    if part_candidate.is_file():
+                        path = part_candidate
                 if not path.is_relative_to(project) or digest(path) != recorded:
                     reasons.append('The sound mix needs the latest voice or sound sources')
                     break
@@ -96,12 +100,15 @@ def part_view(reader, info, part, timeline, chunks):
         reasons.append('A preview has not been rendered yet')
         video_hash = None
     shots = []
+    image_hashes = log.get('source_image_hashes', {})
     for shot in timeline.get('shots', []):
         image = inside(project, str(part.relative_to(project) / shot.get('image', '')))
         image_hash = digest(image) if image else None
         if image_hash:
             files[image.relative_to(project).as_posix()] = image_hash
-        if video.is_file() and (not image_hash or log.get('source_image_hashes', {}).get(str(image)) != image_hash):
+        recorded_image = (image_hashes.get(portable_path(image, part), image_hashes.get(str(image)))
+                          if image else None)
+        if video.is_file() and (not image_hash or recorded_image != image_hash):
             reasons.append('The preview needs the latest shot images')
         shots.append({'id': shot.get('id'), 'start': shot.get('start'), 'end': shot.get('end'),
                       'description': str(written.get(shot.get('id'), {}).get('visual_description') or shot.get('camera_direction', ''))[:1500],

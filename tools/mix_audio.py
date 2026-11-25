@@ -12,7 +12,7 @@ from pathlib import Path
 import re
 
 from validate_timeline import load_audio_assets, read_json, validate
-from studio_common import (ROOT, configuration, executable, find_project, process,
+from studio_common import (ROOT, configuration, executable, find_project, portable_path, process,
                            require_production, sha256_file)
 
 
@@ -282,12 +282,13 @@ def main():
         if coverage:
             raise ValueError('; '.join(coverage) + '; previous mix preserved')
         Path(actual[-1]).replace(output)
+    mix_base = find_project(args.timeline) or args.timeline.parent.resolve()
     output.with_suffix('.mix-log.json').write_text(json.dumps({
-        'timeline': str(args.timeline.resolve()),
+        'timeline': portable_path(args.timeline, mix_base),
         'timeline_sha256': hashlib.sha256(args.timeline.read_bytes()).hexdigest(),
         'reproducible_command': command,
         'output_sha256': sha256_file(output),
-        'source_input_hashes': {str(Path(command[index + 1]).resolve()): sha256_file(command[index + 1])
+        'source_input_hashes': {portable_path(command[index + 1], mix_base): sha256_file(command[index + 1])
                                 for index, value in enumerate(command[:-1])
                                 if value == '-i' and Path(command[index + 1]).is_file()},
         'audio_manifest_sha256': sha256_file(args.timeline.parent / read_json(args.timeline)['audio_manifest'])

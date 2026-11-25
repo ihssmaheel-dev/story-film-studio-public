@@ -1,3 +1,4 @@
 {
+  "schema_version": 1,
   "image_provider": {"mode": "codex-imagegen", "estimated_cost_per_image": null, "currency": "USD"}
 }

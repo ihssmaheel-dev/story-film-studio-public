@@ -2,7 +2,7 @@
 import argparse
 from pathlib import Path
 
-from studio_common import ROOT, atomic_json, atomic_text, read_json, sha256_file, utc_now
+from studio_common import ROOT, atomic_json, atomic_text, read_json, resolve_portable_path, sha256_file, utc_now
 from camera_motion import normalize_motion
 
 GATES = ('G1', 'G2', 'G3', 'G4', 'G5', 'G6')
@@ -78,7 +78,7 @@ def approval_status(project, refresh=False):
         for job in status.get('jobs', {}).values():
             if job.get('status') == 'complete':
                 altered = [name for name, digest in job.get('inputs', {}).items()
-                           if not Path(name).is_file() or sha256_file(name) != digest]
+                           if not (resolved := resolve_portable_path(name, project)).is_file() or sha256_file(resolved) != digest]
                 if altered:
                     job.update(status='stale', stale_reason='Actual job inputs changed', changed_inputs=altered)
                 else:
@@ -207,14 +207,23 @@ def record_gate(project, gate, revision, quote, decision_reference, approved_by=
     if gate == 'G5':
         intake = read_json(project / 'creative/intake.json')
         narrator = read_json(project / 'audio/narrator.json')
-        if intake.get('performance') != 'none' and (not narrator.get('voice') or not narrator.get('model_sha256') or not narrator.get('voices_sha256')):
-            raise ValueError('Select/audition the voice and record exact model/voice hashes before G5')
         if intake.get('performance') != 'none':
-            from studio_common import configuration
-            runtime = configuration(project)['runtime']
-            for field, name in (('model_sha256', 'model'), ('voices_sha256', 'voices')):
-                if narrator[field] != sha256_file(ROOT / runtime[name]):
-                    raise ValueError('G5 narrator hashes differ from the actual installed model/voice files')
+            from speech_providers import ready_problems, validate_profile, voice_config
+            validate_profile(narrator)
+            speakers = {item.get('speaker', 'NARRATOR') for part in (project / 'parts').glob('part_*')
+                        for item in read_json(part / 'speech.json', {}).get('utterances', [])} or {'NARRATOR'}
+            configs = [voice_config(narrator, speaker) for speaker in speakers]
+            errors = [issue for config in configs for issue in ready_problems(project, config)]
+            if errors:
+                raise ValueError('; '.join(dict.fromkeys(errors)))
+            if any(config['provider'] == 'kokoro' for config in configs):
+                if not narrator.get('model_sha256') or not narrator.get('voices_sha256'):
+                    raise ValueError('Select/audition the voice and record exact model/voice hashes before G5')
+                from studio_common import configuration
+                runtime = configuration(project)['runtime']
+                for field, name in (('model_sha256', 'model'), ('voices_sha256', 'voices')):
+                    if narrator[field] != sha256_file(ROOT / runtime[name]):
+                        raise ValueError('G5 narrator hashes differ from the actual installed model/voice files')
     artifacts = snapshot(project, gate)
     if not artifacts:
         raise ValueError(f'No review artifacts exist for {gate}')

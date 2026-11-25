@@ -5,7 +5,7 @@ import re
 
 from part_continuity import handoff, problems as part_problems
 from project_records import artifact_path, validate_continuity
-from studio_common import fingerprint, hash_session, read_json, sha256_file
+from studio_common import fingerprint, hash_session, read_json, resolve_portable_path, sha256_file
 
 
 def command(project, action, *args):
@@ -25,7 +25,12 @@ def media_state(project, part):
         if mix.get('output_sha256') != sha256_file(part / timeline['audio_file']):
             return result
         for name, digest in mix.get('source_input_hashes', {}).items():
-            if sha256_file(name) != digest:
+            resolved = resolve_portable_path(name, project)
+            if not resolved.is_file() and not Path(name).is_absolute():
+                part_candidate = (part / name).resolve()
+                if part_candidate.is_file():
+                    resolved = part_candidate
+            if sha256_file(resolved) != digest:
                 return result
         preview_inputs(project, part.name)
         result['preview_current'] = True
@@ -71,12 +76,35 @@ def action(kind, actor, message, **fields):
     return {'kind': kind, 'actor': actor, 'message': message, **fields}
 
 
+def full_film_delivery(project):
+    """Return a current verified full-film delivery folder when present, else None."""
+    final = project / 'full-film/final.mp4'
+    if not final.is_file():
+        return None
+    final_hash = sha256_file(final)
+    candidates = [*sorted((project / 'delivery').glob('full-film-*/manifest.json')),
+                  project / 'full-film/manifest.json']
+    for path in reversed(candidates):
+        if not path.is_file():
+            continue
+        manifest = read_json(path, {})
+        files = manifest.get('files', {})
+        review = manifest.get('playback_review', {})
+        if (manifest.get('release_ready') is True
+                and review.get('status') == 'passed'
+                and files.get('full-film/final.mp4') == final_hash
+                and all((project / rel).is_file() and sha256_file(project / rel) == digest
+                        for rel, digest in files.items() if not rel.startswith('runtime/'))):
+            return str(path.parent)
+    return None
+
+
 @hash_session()
 def next_work(project, part_selection='auto'):
     from workflow import (policy, questions, delegation_status, audit_problems, written_problems,
                           master_problems, delivery_outputs)
     project = Path(project).resolve()
-    if part_selection != 'auto' and not re.fullmatch(r'part_[0-9]{3}', part_selection):
+    if part_selection != 'auto' and not re.fullmatch(r'part_\d{3,}', part_selection):
         raise ValueError('Choose auto or a canonical part_### ID')
     packet = {'schema_version': 1, 'project': str(project), 'part': None, 'actions': [], 'advisories': [],
               'scope': 'Current source/canonical records only. No invented progress, approvals or provider results.'}
@@ -118,11 +146,16 @@ def next_work(project, part_selection='auto'):
     if part_selection == 'auto':
         part = next((p for p in parts if not states[p.name]['delivered']), None)
         if part is None:
+            deliveries = [states[p.name]['delivery'] for p in parts]
             if 'one continuous full-length video' in delivery_outputs(project):
-                return finish(action('continuous_edition', 'agent', 'Assemble and inspect the included continuous full-film cut using the measured edit plan',
-                                     context=['creative/continuous-edit.md'], parts=[states[p.name]['delivery'] for p in parts]))
+                full_delivery = full_film_delivery(project)
+                if not full_delivery:
+                    return finish(action('continuous_edition', 'agent', 'Assemble and inspect the included continuous full-film cut using the measured edit plan',
+                                         context=['creative/continuous-edit.md'], parts=deliveries))
+                return finish(action('complete', 'none', 'All configured part deliveries and the continuous full-film edition are present and current',
+                                     deliveries=deliveries, full_film_delivery=full_delivery))
             return finish(action('complete', 'none', 'All configured part deliveries are present and current',
-                                 deliveries=[states[p.name]['delivery'] for p in parts]))
+                                 deliveries=deliveries))
     else:
         part = next((p for p in parts if p.name == part_selection), None)
         if part is None:
@@ -191,18 +224,22 @@ def next_work(project, part_selection='auto'):
     ids = list(dict.fromkeys([s.get('style_id') for s in selected] +
                             [identity for s in selected for identity in s.get('character_ids', []) if appearances[identity] > 1]))
     records = {key: item for group in ('styles', 'characters') for key, item in registry.get(group, {}).items()}
+    from image_jobs import builtin_scope
+    from studio_common import configuration
+    missing_cost_scope = (configuration(project)['image_provider'].get('estimated_cost_per_image') is None
+                          and not builtin_scope(project))
     for identity in filter(None, ids):
         record = records[identity]
         if not record.get('reference_paths'):
-            from image_jobs import builtin_scope
-            from studio_common import configuration
-            if configuration(project)['image_provider'].get('estimated_cost_per_image') is None and not builtin_scope(project):
+            if missing_cost_scope:
                 return finish(action('image_cost_scope', 'user', 'Choose a known reference-image price inside the budget, or explicitly accept unreported charges with a finite built-in call cap'))
             return finish(action('reference', 'agent', 'Establish the shared style/recurring cast reference before final shots', entity=identity,
                                  command=command(project, 'images', 'reference', '--entity', identity)))
     for identity in visible_cast(project, [part.name]):
         record = records[identity]
         if not record.get('reference_paths'):
+            if missing_cost_scope:
+                return finish(action('image_cost_scope', 'user', 'Choose a known reference-image price inside the budget, or explicitly accept unreported charges with a finite built-in call cap'))
             return finish(action('reference', 'agent', 'Create the requested identity, expression and pose sheet for this character', entity=identity,
                                  command=command(project, 'images', 'reference', '--entity', identity), context=['docs/18-cast-sheets.md']))
         problems = sheet_problems(project, identity)
@@ -221,9 +258,7 @@ def next_work(project, part_selection='auto'):
         return finish(action('run_preview', 'agent', 'Preflight and execute the reusable local stages together',
                              command=command(project, 'continue', '--part', part.name)))
     if missing_images:
-        from image_jobs import builtin_scope
-        from studio_common import configuration
-        if configuration(project)['image_provider'].get('estimated_cost_per_image') is None and not builtin_scope(project):
+        if missing_cost_scope:
             return finish(action('image_cost_scope', 'user', 'Choose a known image price inside the budget, or explicitly accept unreported charges with a finite built-in call cap'))
         shot = missing_images[0]
         return finish(action('image', 'agent', 'Execute the next actual image request, inspect and resume', shot=shot['id'],

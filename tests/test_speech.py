@@ -3,6 +3,7 @@ import base64
 import copy
 import io
 import json
+import os
 from pathlib import Path
 import sys
 import unittest
@@ -167,7 +168,7 @@ class SpeechFixture(unittest.TestCase):
             # even with no credentials, without another potentially paid request.
             clip = self.output.parent / manifest['chunks'][0]['file']
             clip.write_bytes(b'corrupted derivative')
-            with patch.dict('os.environ', {}, clear=True):
+            with patch.dict('os.environ', {'PATH': os.environ.get('PATH', '')}, clear=True):
                 run_project(self.project, stages=['narration'])
             self.assertEqual(fetch.call_count, 2)
             self.assertEqual(sha256_file(clip), manifest['chunks'][0]['sha256'])
@@ -322,7 +323,7 @@ class SpeechFixture(unittest.TestCase):
         recovered = self.project / 'audio/recovered.wav'
         recovered.write_bytes(wav_bytes())
         reconcile_speech(self.project, request.stem, 'received', 0.001, 'SYNTHETIC provider history evidence only', recovered)
-        with patch.dict('os.environ', {}, clear=True), patch('speech.fetch_audio', side_effect=AssertionError('No second paid request')):
+        with patch.dict('os.environ', {'PATH': os.environ.get('PATH', '')}, clear=True), patch('speech.fetch_audio', side_effect=AssertionError('No second paid request')):
             result = self.render()
         self.assertAlmostEqual(result['duration'], 0.1, places=5)
         self.assertEqual(read_json(request)['actual_cost'], 0.001)
@@ -366,7 +367,7 @@ class SpeechFixture(unittest.TestCase):
         workflow['scope']['budget']['limit'] = 0
         atomic_json(self.project / 'production/workflow.json', workflow)
         self.grant()
-        with patch.dict('os.environ', {}, clear=True), patch('speech.fetch_audio', side_effect=self.cloud_response) as fetch:
+        with patch.dict('os.environ', {'PATH': os.environ.get('PATH', '')}, clear=True), patch('speech.fetch_audio', side_effect=self.cloud_response) as fetch:
             result = self.render()
         self.assertEqual(fetch.call_count, 1)
         self.assertAlmostEqual(result['duration'], 0.1, places=5)
@@ -484,6 +485,66 @@ class ChatterboxBridgeContracts(unittest.TestCase):
                 synthesize(model, 'turbo', root, dict(body, exaggeration=0.5))
             with self.assertRaisesRegex(ValueError, 'English only'):
                 synthesize(model, 'turbo', root, dict(body, language='es-ES'))
+
+    def test_chatterbox_http_server_routes_info_speech_and_errors(self):
+        import subprocess
+        import tempfile
+        import threading
+        from http.server import HTTPServer
+        from urllib.request import Request, urlopen
+        import numpy as np
+        import chatterbox_server
+
+        class Samples:
+            def detach(self): return self
+            def cpu(self): return self
+            def numpy(self): return np.zeros((1, 2400), dtype=np.float32)
+
+        class Model:
+            sr = 24000
+            def generate(self, text, **kwargs): return Samples()
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            ckpt = root / 'ckpt'
+            voices = root / 'voices'
+            ckpt.mkdir(); voices.mkdir()
+            (ckpt / 'weights.bin').write_bytes(b'stub')
+            ref = voices / 'ref.wav'
+            ref.write_bytes(wav_bytes())
+
+            # Exercise HTTPServer handler via main() patched to return after binding.
+            bound = {}
+            class CapturingServer(HTTPServer):
+                def serve_forever(self):
+                    bound['server'] = self
+                    threading.Thread(target=super().serve_forever, daemon=True).start()
+
+            with patch.object(chatterbox_server, 'load_model', return_value=Model()), \
+                 patch.object(chatterbox_server, 'HTTPServer', CapturingServer), \
+                 patch('importlib.metadata.version', return_value='0.0-test'), \
+                 patch.object(sys, 'argv', ['chatterbox_server.py', '--checkpoints', str(ckpt), '--voice-root', str(voices), '--model', 'turbo', '--port', '0']):
+                chatterbox_server.main()
+            server = bound['server']
+            self.addCleanup(server.server_close)
+            self.addCleanup(server.shutdown)
+            base = f'http://127.0.0.1:{server.server_port}'
+            with urlopen(base + '/info', timeout=5) as resp:
+                self.assertEqual(resp.status, 200)
+                self.assertEqual(json.load(resp)['model'], 'turbo')
+            with self.assertRaises(HTTPError) as err:
+                urlopen(base + '/unknown', timeout=5)
+            self.assertEqual(err.exception.code, 404)
+            req = Request(base + '/speech', data=json.dumps({
+                'model': 'turbo', 'voice': 'actor', 'text': 'Hello.', 'speed': 1, 'language': 'en-US', 'reference_audio': str(ref)
+            }).encode(), method='POST', headers={'Content-Type': 'application/json'})
+            with urlopen(req, timeout=5) as resp:
+                self.assertEqual(resp.status, 200)
+                self.assertTrue(resp.read().startswith(b'RIFF'))
+            bad = Request(base + '/speech', data=b'{}', method='POST', headers={'Content-Type': 'application/json'})
+            with self.assertRaises(HTTPError) as err:
+                urlopen(bad, timeout=5)
+            self.assertEqual(err.exception.code, 400)
 
 
 if __name__ == '__main__':
